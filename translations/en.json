@@ -1,0 +1,9 @@
+{
+	"nav": {
+		"homeLink": "Home",
+		"antColonyLink": "Ant Colony",
+		"conwaysLink": "Conway's",
+		"pathfinding": "Pathfinding",
+		"sorting": "Sorting"
+	}
+}

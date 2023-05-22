@@ -1,0 +1,42 @@
+.mainContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+#canvasMain {
+	display: inline-flex;
+	flex-direction: column;
+	padding: 2rem;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+
+	#canvasContainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 1;
+	}
+
+	.toolbarTop,
+	.toolbarBottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		gap: 1rem;
+		padding: 1rem;
+
+		.checkboxContainer {
+			display: flex;
+			align-items: center;
+			flex-shrink: 0;
+			gap: 0.25rem;
+		}
+
+		.algoControls {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+}

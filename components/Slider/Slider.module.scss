@@ -1,0 +1,25 @@
+@import "../../styles/common/utils.scss";
+
+.sliderContainer {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	width: 100%;
+	align-items: center;
+
+	input {
+		grid-column: span 2;
+	}
+
+	.refresh {
+		display: flex;
+		font-size: 2rem;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		transition: 0.1s ease-in-out;
+
+		&:hover {
+			background-color: $hover;
+		}
+	}
+}

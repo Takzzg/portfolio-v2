@@ -1,0 +1,10 @@
+@import "../../../styles/common/utils.scss";
+
+.footer {
+	padding: 2rem;
+	background-color: $footer;
+
+	.repoLink {
+		color: royalblue;
+	}
+}

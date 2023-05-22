@@ -1,0 +1,16 @@
+@import "../../styles/common/utils.scss";
+
+.palette {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.5rem;
+	background-color: $footer;
+	border: 2px solid $navbar;
+	border-radius: 10px;
+
+	.blocksContainer {
+		display: flex;
+		gap: 1rem;
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"nav": {
+		"homeLink": "Inicio",
+		"antColonyLink": "Colonia",
+		"conwaysLink": "Conway",
+		"pathfinding": "Laberintos",
+		"sorting": "Ordenamiento"
+	}
+}
