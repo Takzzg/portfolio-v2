@@ -1,0 +1,49 @@
+.disclaimerCont {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .disclaimer {
+    max-width: 600px;
+    color: black;
+    background-color: whitesmoke;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    position: relative;
+
+    .title {
+      font-size: 2.5rem;
+    }
+
+    .close {
+      font-size: 2rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 1rem;
+      padding: 0.5rem;
+      line-height: 0;
+      border-radius: 0.5rem;
+
+      &:hover {
+        background-color: rgba($color: #000000, $alpha: 0.2);
+      }
+    }
+
+    .body {
+      font-size: 1.3rem;
+
+      a {
+        color: blue;
+        text-decoration: underline;
+      }
+    }
+  }
+}

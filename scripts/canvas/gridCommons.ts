@@ -1,4 +1,4 @@
-import { clamp, lerp } from "./../utils";
+import { clamp, lerp } from "../utilities/MathHelpers";
 
 // ----- internal vars for reusability -----
 

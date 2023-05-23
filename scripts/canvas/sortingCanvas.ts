@@ -1,4 +1,4 @@
-import { clamp } from "../utils";
+import { clamp } from "../utilities/MathHelpers";
 
 let canvas: HTMLCanvasElement;
 let ctx: CanvasRenderingContext2D;
