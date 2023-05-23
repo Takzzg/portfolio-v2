@@ -5,7 +5,7 @@ import "../styles/common/globals.scss";
 import Layout from "../components/Layout/Layout";
 import LangProvider from "../context/Lang";
 
-function MyApp({ Component, pageProps, session }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 	return (
 		<SessionProvider session={session}>
 			<LangProvider>
