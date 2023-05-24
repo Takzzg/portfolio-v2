@@ -1,13 +1,29 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { onUserLogIn } from "../../../prisma/Users";
 
-export const authOptions = {
+export const authOptions: AuthOptions = {
 	providers: [
 		GoogleProvider({
 			clientId: process.env.GOOGLE_CLIENT_ID as string,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
 		}),
 	],
+	callbacks: {
+		async signIn(userDetails) {
+			onUserLogIn(userDetails);
+			return true;
+		},
+		async redirect({ url, baseUrl }) {
+			return baseUrl;
+		},
+		async session({ session, user, token }) {
+			return session;
+		},
+		async jwt({ token, user, account, profile, isNewUser }) {
+			return token;
+		},
+	},
 	secret: process.env.NEXTAUTH_SECRET,
 };
 

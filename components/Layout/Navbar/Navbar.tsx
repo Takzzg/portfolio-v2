@@ -3,6 +3,7 @@ import styles from "./Navbar.module.scss";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { langCtx } from "../../../context/Lang";
+import NavbarUser from "../../User/NavBarUser/NavbarUser";
 
 const Navbar = () => {
 	const router = useRouter();
@@ -45,6 +46,8 @@ const Navbar = () => {
 				>
 					English
 				</button>
+
+				<NavbarUser />
 			</div>
 		</div>
 	);

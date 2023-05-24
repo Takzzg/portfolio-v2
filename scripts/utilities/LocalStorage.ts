@@ -4,6 +4,7 @@ const LOCAL_STORAGE_ID = "guidoq-portfolio-v2";
 
 const LS_KEYS = {
 	DisclaimerExpiration: "disclaimer_expiration",
+	UserDetails: "user_details",
 };
 
 type DataStruct = { [key: string]: any };
@@ -30,14 +31,12 @@ const _getParsedData = (): DataStruct => {
 
 const _getKVPair = (id: string) => {
 	let parsedValues = _getParsedData();
-	console.log("parsed values", parsedValues);
 	if (!parsedValues[id]) return null;
 	return { id, value: parsedValues[id] };
 };
 
 const _saveKVPair = (id: string, value: any) => {
 	let parsedValues = _getParsedData();
-	console.log("parsed values", parsedValues);
 	parsedValues[id] = value;
 	localStorage.setItem(LOCAL_STORAGE_ID, JSON.stringify(parsedValues));
 };
@@ -56,7 +55,6 @@ const _createNewDisclaimerExpiration = () => {
 
 export const checkDisclaimerExpiration = () => {
 	let disclaimerExpiration = _getKVPair(LS_KEYS.DisclaimerExpiration);
-	console.log("disclaimer expiration", disclaimerExpiration);
 
 	if (disclaimerExpiration === null) {
 		_createNewDisclaimerExpiration();
@@ -69,3 +67,27 @@ export const checkDisclaimerExpiration = () => {
 	if (!expValid) _createNewDisclaimerExpiration();
 	return expValid;
 };
+
+// ------------------- Users -------------------
+
+type UserDetails = {
+	id: string;
+	name: string;
+	email: string;
+};
+
+export const getUserData = () => {
+	let data = _getKVPair(LS_KEYS.UserDetails);
+	if (!data) return null;
+	return JSON.parse(data.value);
+};
+
+export const saveUserData = (userDetails: UserDetails) => {
+	_saveKVPair(LS_KEYS.UserDetails, JSON.stringify(userDetails));
+};
+
+// ------------------- Character Sheets -------------------
+
+export const getUserCS = () => {};
+
+export const saveUserCS = () => {};
