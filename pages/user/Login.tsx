@@ -18,7 +18,14 @@ const Login = (props: Props) => {
 	return (
 		<div>
 			<p>Please log in</p>
-			<button onClick={() => signIn()}>Log In</button>
+			<button
+				onClick={(e) => {
+					e.preventDefault();
+					signIn();
+				}}
+			>
+				Log In
+			</button>
 		</div>
 	);
 };
