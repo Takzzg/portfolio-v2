@@ -25,6 +25,7 @@ const Divider = ({ color, divider: _divider }: Props) => {
 
 	useEffect(() => {
 		window.addEventListener("resize", () => draw());
+		// ---------- BUGGED -------------
 	}, [draw]);
 
 	useEffect(() => {

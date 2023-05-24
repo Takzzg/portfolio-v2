@@ -1,15 +1,21 @@
 @import "../../../styles/common/utils.scss";
 
-.navCont {
+.navbar {
 	padding: 1rem;
 	width: 100%;
 	top: 0;
 	z-index: 10;
 }
 
-.navbar {
+.navbarContainer {
 	background-color: $navbar;
 	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.navbarItems {
 	display: flex;
 	flex-wrap: wrap;
 	overflow: hidden;

@@ -1,0 +1,29 @@
+.navbarUser {
+  display: grid;
+  grid-template-areas:
+    "name  image"
+    "email image";
+  align-items: center;
+  padding: 0.25rem;
+
+  .name,
+  .email {
+    text-align: end;
+  }
+
+  .name {
+    grid-area: name;
+  }
+
+  .email {
+    grid-area: email;
+  }
+
+  .image {
+    grid-area: image;
+    height: 50px;
+    width: 50px;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+}

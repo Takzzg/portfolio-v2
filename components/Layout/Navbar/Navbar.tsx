@@ -14,38 +14,40 @@ const Navbar = () => {
 		{ href: "/Conways", title: "Conway's" },
 		{ href: "/Pathfinding", title: "Pathfinding" },
 		{ href: "/Sorting", title: "Sorting" },
+		{ href: "/CharacterSheets", title: "Character Sheets" },
 	];
 
 	return (
-		<div
-			className={styles.navCont}
-			style={router.pathname === "/" ? { position: "fixed" } : { position: "sticky" }}
-		>
-			<div className={styles.navbar}>
-				{buttons.map((b, i) => (
-					<NavLink
-						key={b.href}
-						href={b.href}
-						active={router.pathname === b.href}
-						title={b.title}
-						// color={`hsl(${(255 / buttons.length) * i}, 100%, 25%)`}
-					/>
-				))}
+		<div className={styles.navbar} style={router.pathname === "/" ? { position: "fixed" } : { position: "sticky" }}>
+			<div className={styles.navbarContainer}>
+				<div className={styles.navbarItems}>
+					{buttons.map((b, i) => (
+						<NavLink
+							key={b.href}
+							href={b.href}
+							active={router.pathname === b.href}
+							title={b.title}
+							// color={`hsl(${(255 / buttons.length) * i}, 100%, 25%)`}
+						/>
+					))}
+				</div>
 
-				<button
-					onClick={() => {
-						languageCtx.changeLang("es");
-					}}
-				>
-					Español
-				</button>
-				<button
-					onClick={() => {
-						languageCtx.changeLang("en");
-					}}
-				>
-					English
-				</button>
+				<div className={styles.language}>
+					<button
+						onClick={() => {
+							languageCtx.changeLang("es");
+						}}
+					>
+						Español
+					</button>
+					<button
+						onClick={() => {
+							languageCtx.changeLang("en");
+						}}
+					>
+						English
+					</button>
+				</div>
 
 				<NavbarUser />
 			</div>
