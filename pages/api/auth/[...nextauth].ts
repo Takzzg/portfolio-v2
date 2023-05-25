@@ -11,7 +11,7 @@ export const authOptions: AuthOptions = {
 	],
 	callbacks: {
 		async signIn(userDetails) {
-			onUserLogIn(userDetails);
+			// onUserLogIn(userDetails);
 			return true;
 		},
 		async redirect({ url, baseUrl }) {
