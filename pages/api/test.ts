@@ -1,7 +1,6 @@
 import { db } from "@vercel/postgres";
-import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(request: NextApiRequest, response: NextApiResponse) {
+export default async function handler(request: any, response: any) {
 	const client = await db.connect();
 
 	// try {
