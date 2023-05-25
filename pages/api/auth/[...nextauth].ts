@@ -18,8 +18,8 @@ export const authOptions: AuthOptions = {
 	],
 	callbacks: {
 		async signIn(userDetails) {
-			const user = await onUserLogIn(userDetails);
-			console.log("user", user);
+			// const user = await onUserLogIn(userDetails);
+			// console.log("user", user);
 			return true;
 		},
 		async redirect({ url, baseUrl }) {
