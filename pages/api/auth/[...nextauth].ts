@@ -1,6 +1,6 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { onUserLogIn } from "../../../prisma/Users";
+import { onUserLogIn } from "../../../scripts/utilities/db/Users";
 
 export const authOptions: AuthOptions = {
 	providers: [
@@ -11,7 +11,8 @@ export const authOptions: AuthOptions = {
 	],
 	callbacks: {
 		async signIn(userDetails) {
-			// onUserLogIn(userDetails);
+			const user = await onUserLogIn(userDetails);
+			console.log("user", user);
 			return true;
 		},
 		async redirect({ url, baseUrl }) {
