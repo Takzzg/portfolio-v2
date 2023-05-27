@@ -10,14 +10,14 @@ export const onUserLogIn = async (userDetails: any) => {
 
 	if (alreadyRegistered) {
 		console.log("alreadyRegistered", alreadyRegistered);
-		return;
+		return Promise.resolve(alreadyRegistered);
 	}
 
 	const { id, name, email, image } = userDetails.user;
-	const user = await prisma.user.create({
+	const addedUser = await prisma.user.create({
 		data: { id, name, email, image },
 	});
-	console.log("user", user);
+	console.log("addedUser", addedUser);
 
-	return user;
+	return Promise.resolve(addedUser);
 };
