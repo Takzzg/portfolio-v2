@@ -15,22 +15,22 @@ export const authOptions = {
 		}),
 	],
 	secret: process.env.NEXTAUTH_SECRET,
-	// callbacks: {
-	// 	async signIn(userDetails) {
-	// 		// const user = await onUserLogIn(userDetails);
-	// 		// console.log("user", user);
-	// 		return true;
-	// 	},
-	// 	async redirect({ url, baseUrl }) {
-	// 		return baseUrl;
-	// 	},
-	// 	async session({ session, user, token }) {
-	// 		return session;
-	// 	},
-	// 	async jwt({ token, user, account, profile, isNewUser }) {
-	// 		return token;
-	// 	},
-	// },
+	callbacks: {
+		async signIn(userDetails: any) {
+			const user = await onUserLogIn(userDetails);
+			console.log("user", user);
+			return true;
+		},
+		async redirect({ url, baseUrl }: any) {
+			return baseUrl;
+		},
+		async session({ session, user, token }: any) {
+			return session;
+		},
+		async jwt({ token, user, account, profile, isNewUser }: any) {
+			return token;
+		},
+	},
 };
 
 export default NextAuth(authOptions);
