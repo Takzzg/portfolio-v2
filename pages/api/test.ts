@@ -11,6 +11,6 @@ export default async function handler(request: any, response: any) {
 	// 	return response.status(500).json({ error });
 	// }
 
-	const pets = await client.sql`SELECT * FROM Pets;`;
-	return response.status(200).json({ pets });
+	// const pets = await client.sql`SELECT * FROM Pets;`;
+	// return response.status(200).json({ pets });
 }
