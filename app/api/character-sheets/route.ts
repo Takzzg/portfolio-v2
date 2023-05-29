@@ -1,3 +1,3 @@
 // manage public character sheets
 
-export async function GET() {}
+export const GET = async () => {};

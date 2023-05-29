@@ -1,3 +1,3 @@
 // manage all users
 
-export async function GET() {}
+export const GET = async () => {};
