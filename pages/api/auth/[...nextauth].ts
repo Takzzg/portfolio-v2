@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { onUserLogIn } from "../../../scripts/utilities/db/Users";
+import { onUserLogIn } from "../db/Users";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 
@@ -17,8 +17,7 @@ export const authOptions = {
 	secret: process.env.NEXTAUTH_SECRET,
 	callbacks: {
 		async signIn(userDetails: any) {
-			const user = await onUserLogIn(userDetails);
-			console.log("user", user);
+			await onUserLogIn(userDetails);
 			return true;
 		},
 		async redirect({ url, baseUrl }: any) {
