@@ -82,7 +82,7 @@ model CommentsOnCharacterSheet {
   account    Account        @relation(fields: [id_account], references: [id])
   id_sheet   String
   sheet      CharacterSheet @relation(fields: [id_sheet], references: [id])
-  comment    String
+  comment    String         @db.Text
 
   @@id([id_account, id_sheet])
 }
