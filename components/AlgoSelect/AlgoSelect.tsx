@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { AlgoRefProps } from "./algoRefs";
 import styles from "./AlgoSelect.module.scss";

@@ -1,15 +1,17 @@
+"use client";
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FaPlay, FaRedo, FaStepForward, FaStop } from "react-icons/fa";
 
-import styles from "../styles/pages/Conways.module.scss";
-import Button from "../components/Button/Button";
-import Title from "../components/Headers/Title";
-import * as ConwaysScript from "../scripts/canvas/conwaysCanvas";
-import * as CommonScripts from "../scripts/canvas/gridCommons";
-import Slider from "../components/Slider/Slider";
+import styles from "./Conways.module.scss";
+import * as ConwaysScript from "../../scripts/canvas/conwaysCanvas";
+import * as CommonScripts from "../../scripts/canvas/gridCommons";
 import Head from "next/head";
+import Button from "../../components/Button/Button";
+import Slider from "../../components/Slider/Slider";
+import Title from "../../components/Headers/Title";
 
-const Conways = () => {
+const Page = () => {
 	const canvas = useRef<HTMLCanvasElement>(null);
 	const animation = useRef<NodeJS.Timer | null>(null);
 
@@ -173,4 +175,4 @@ const Conways = () => {
 	);
 };
 
-export default Conways;
+export default Page;

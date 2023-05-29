@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
-import CSMannager from "../components/CharacterSheet/CSMannager/CSMannager";
-import CSEditor from "../components/CharacterSheet/CSEditor/CSEditor";
+// import React, { useEffect, useMemo, useState } from "react";
+import CSMannager from "../../components/CharacterSheet/CSMannager/CSMannager";
+import CSEditor from "../../components/CharacterSheet/CSEditor/CSEditor";
 // import { PrismaClient } from "@prisma/client";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "./api/auth/[...nextauth]";

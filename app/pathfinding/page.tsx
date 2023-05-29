@@ -1,3 +1,5 @@
+"use client";
+
 import Head from "next/head";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
@@ -12,17 +14,17 @@ import {
 	FaRegSquare,
 	FaStop,
 } from "react-icons/fa";
-import { pathfindingAlgos } from "../components/AlgoSelect/algoRefs";
-import AlgorithmSelect from "../components/AlgoSelect/AlgoSelect";
-import Button from "../components/Button/Button";
-import Slider from "../components/Slider/Slider";
-import Title from "../components/Headers/Title";
 
-import * as PathfindingScript from "../scripts/canvas/pathfindingCanvas";
-import * as CommonScripts from "../scripts/canvas/gridCommons";
-import { CellHistory } from "../scripts/pathfinding/breadth";
-import styles from "../styles/pages/Pathfinding.module.scss";
-import BlockSelect from "../components/BlockSelect/BlockSelect";
+import styles from "./Pathfinding.module.scss";
+import * as PathfindingScript from "../../scripts/canvas/pathfindingCanvas";
+import * as CommonScripts from "../../scripts/canvas/gridCommons";
+import { CellHistory } from "../../scripts/pathfinding/breadth";
+import Title from "../../components/Headers/Title";
+import AlgorithmSelect from "../../components/AlgoSelect/AlgoSelect";
+import Button from "../../components/Button/Button";
+import { pathfindingAlgos } from "../../components/AlgoSelect/algoRefs";
+import Slider from "../../components/Slider/Slider";
+import BlockSelect from "../../components/BlockSelect/BlockSelect";
 
 interface solution {
 	history: CellHistory[];

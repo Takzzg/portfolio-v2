@@ -1,11 +1,14 @@
+import React from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Subtitle from "../components/Headers/Subtitle";
 
 import Section from "../components/Section/Section";
-import styles from "../styles/pages/Home.module.scss";
+import styles from "./Home.module.scss";
 
-const Home: NextPage = () => {
+type Props = {};
+
+const Page: NextPage = (props: Props) => {
 	return (
 		<div className={styles.home}>
 			<Head>
@@ -76,4 +79,4 @@ const Home: NextPage = () => {
 	);
 };
 
-export default Home;
+export default Page;

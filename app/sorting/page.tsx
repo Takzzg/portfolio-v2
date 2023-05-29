@@ -1,17 +1,19 @@
+"use client";
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import Head from "next/head";
 
 import { FaPlay, FaRandom, FaSignal, FaStepForward, FaStop, FaUndo } from "react-icons/fa";
 
-import * as CanvasScript from "../scripts/canvas/sortingCanvas";
-import Algorithms from "../scripts/sorting/index";
-import { sortingAlgos } from "../components/AlgoSelect/algoRefs";
+import * as CanvasScript from "../../scripts/canvas/sortingCanvas";
+import Algorithms from "../../scripts/sorting/index";
 
-import styles from "../styles/pages/Sorting.module.scss";
-import Slider from "../components/Slider/Slider";
-import Title from "../components/Headers/Title";
-import Button from "../components/Button/Button";
-import AlgorithmSelect from "../components/AlgoSelect/AlgoSelect";
+import styles from "./Sorting.module.scss";
+import Title from "../../components/Headers/Title";
+import Slider from "../../components/Slider/Slider";
+import AlgorithmSelect from "../../components/AlgoSelect/AlgoSelect";
+import { sortingAlgos } from "../../components/AlgoSelect/algoRefs";
+import Button from "../../components/Button/Button";
 
 const Sorting = () => {
 	const [itemCount, setItemCount] = useState<number>(20);

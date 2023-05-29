@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
 import { FaRandom } from "react-icons/fa";

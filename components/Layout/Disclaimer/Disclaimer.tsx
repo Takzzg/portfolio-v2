@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import styles from "./Disclaimer.module.scss";
 import { GrClose } from "react-icons/gr";

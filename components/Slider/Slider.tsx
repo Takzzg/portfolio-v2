@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./Slider.module.scss";
 import { TiRefresh } from "react-icons/ti";
 import { useState } from "react";

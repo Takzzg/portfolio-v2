@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, ReactNode, useState } from "react";
 
 import en from "../translations/en.json";
