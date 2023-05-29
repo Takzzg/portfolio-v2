@@ -1,26 +1,22 @@
-// import React, { useEffect, useMemo, useState } from "react";
 import CSMannager from "../../components/CharacterSheet/CSMannager/CSMannager";
 import CSEditor from "../../components/CharacterSheet/CSEditor/CSEditor";
-// import { PrismaClient } from "@prisma/client";
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "./api/auth/[...nextauth]";
-// import { useSession } from "next-auth/react";
-// import { getUserCS } from "./api/db/Users";
-// import { CharacterSheet } from "@prisma/client";
+import { getFeaturedSheets } from "../../scripts/db/character-sheets";
+import { getServerSession } from "next-auth";
+import { NextAuthConfig } from "../api/auth/[...nextauth]/route";
 
 type Props = {};
 
-const CharacterSheets = (props: Props) => {
-	// const { data: session } = useSession();
-	// const [characterSheets, setCharacterSheets] = useState<CharacterSheet[]>([]);
+const getSession = async () => {
+	const session = await getServerSession(NextAuthConfig);
+	return session;
+};
 
-	// useEffect(() => {
-	// 	console.log("session", session);
-	// 	getUserCS(session).then((sheets) => setCharacterSheets(sheets));
-	// }, [session]);
+const CharacterSheets = async (props: Props) => {
+	const featuredCS = await getFeaturedSheets();
+	console.log("featuredCS", featuredCS);
 
-	// console.log("props", props);
-	// console.log("characterSheets", characterSheets);
+	const session = await getSession();
+	console.log("session", session);
 
 	return (
 		<div>
@@ -29,25 +25,5 @@ const CharacterSheets = (props: Props) => {
 		</div>
 	);
 };
-
-// export const getServerSideProps = async (context: any) => {
-// 	const prisma = new PrismaClient();
-
-// 	const session = await getServerSession(context.req, context.res, authOptions);
-// 	if (!session) return redirectToLogin();
-
-// 	const user = await prisma.user.findUnique({ where: { email: session?.user?.email } });
-// 	if (!user) return redirectToLogin();
-
-// 	const posts = await prisma.characterSheet.findMany({ where: { authorId: user.id } });
-// 	return { props: { session, posts } };
-// };
-
-// const redirectToLogin = () => {
-// 	return {
-// 		redirect: { permanent: false, destination: "/user/Login" },
-// 		props: {},
-// 	};
-// };
 
 export default CharacterSheets;

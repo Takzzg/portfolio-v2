@@ -1,7 +1,5 @@
-import { PrismaClient, User } from "@prisma/client";
 import { Session } from "next-auth";
-
-const prisma = new PrismaClient();
+import { prisma } from "./prisma";
 
 export const onUserLogIn = async (userDetails: any) => {
 	// console.log("userDetails", userDetails);

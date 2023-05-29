@@ -1,13 +1,11 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client";
-import { onUserLogIn } from "../../../../scripts/db/Users";
+import { onUserLogIn } from "../../../../scripts/db/users";
+import { prisma } from "../../../../scripts/db/prisma";
 
-const prisma = new PrismaClient();
-
-const handler = NextAuth({
+export const NextAuthConfig: NextAuthOptions = {
 	adapter: PrismaAdapter(prisma),
 	providers: [
 		GoogleProvider({
@@ -25,12 +23,14 @@ const handler = NextAuth({
 			return baseUrl;
 		},
 		async session({ session, user, token }: any) {
-			return session;
+			return { ...session, user };
 		},
 		async jwt({ token, user, account, profile, isNewUser }: any) {
 			return token;
 		},
 	},
-});
+};
+
+const handler = NextAuth(NextAuthConfig);
 
 export { handler as GET, handler as POST };

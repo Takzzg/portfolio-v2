@@ -63,7 +63,6 @@ export const checkDisclaimerExpiration = () => {
 
 	// check expiration date (24hs)
 	let expValid = compareExpiration(disclaimerExpiration.value);
-	console.log("expValid", expValid);
 	if (!expValid) _createNewDisclaimerExpiration();
 	return expValid;
 };
