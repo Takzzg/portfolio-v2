@@ -1,5 +1,4 @@
 import React from "react";
-import type { NextPage } from "next";
 import Head from "next/head";
 import Subtitle from "../components/Headers/Subtitle";
 
@@ -8,7 +7,7 @@ import styles from "./Home.module.scss";
 
 type Props = {};
 
-const Page: NextPage = (props: Props) => {
+const Page = (props: Props) => {
 	return (
 		<div className={styles.home}>
 			<Head>
