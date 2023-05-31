@@ -12,11 +12,11 @@ const getSession = async () => {
 };
 
 const CharacterSheets = async (props: Props) => {
-	const featuredCS = await getFeaturedSheets();
-	console.log("featuredCS", featuredCS);
+	// const featuredCS = await getFeaturedSheets();
+	// console.log("featuredCS", featuredCS);
 
-	const session = await getSession();
-	console.log("session", session);
+	// const session = await getSession();
+	// console.log("session", session);
 
 	return (
 		<div>

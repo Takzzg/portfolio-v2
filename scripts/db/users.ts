@@ -10,7 +10,7 @@ export const getUserDetails = async (session: Session) => {
 
 	// search db for user
 	const user = await prisma.user.findUnique({ where: { email: session.user.email || undefined } });
-	console.log("user", user);
+	// console.log("user", user);
 
 	return user;
 };
@@ -24,7 +24,7 @@ export const getUserCS = async (session: Session | null) => {
 
 	// search db for character sheets
 	const userCS = await prisma.characterSheet.findMany({ where: { authorId: user.id } });
-	console.log("character sheets: ", userCS);
+	// console.log("character sheets: ", userCS);
 
 	return userCS;
 };

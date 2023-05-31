@@ -12,7 +12,7 @@ const Navbar = () => {
 	const languageCtx = useContext(langCtx);
 
 	const buttons = [
-		{ href: "/", title: languageCtx.lang.nav.homeLink },
+		{ href: "/home", title: languageCtx.lang.nav.homeLink },
 		{ href: "/conways", title: "Conway's" },
 		{ href: "/pathfinding", title: "Pathfinding" },
 		{ href: "/sorting", title: "Sorting" },

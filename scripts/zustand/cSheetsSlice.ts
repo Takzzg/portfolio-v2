@@ -1,18 +1,20 @@
 import type { CSheetsState_I, CSheetsStateType, StateSlice } from "./types";
 
 const initialCSheetsState: CSheetsState_I = {
-	thud: "",
-	waldo: "",
+	userSheets: [],
+	editingSheet: null,
 };
 
 export const createCSheetsSlice: StateSlice<CSheetsStateType> = (set) => ({
 	...initialCSheetsState,
-	setThud: (value) =>
+	setUserSheets: (value) => {
 		set((state) => {
-			state.cSheets.thud = value;
-		}),
-	setWaldo: (value) =>
+			state.cSheets.userSheets = value;
+		});
+	},
+	setEditingSheet: (value) => {
 		set((state) => {
-			state.cSheets.waldo = value;
-		}),
+			state.cSheets.editingSheet = value;
+		});
+	},
 });
