@@ -7,33 +7,33 @@ import { NextAuthConfig } from "./api/auth/[...nextauth]/route";
 import { useCombinedStore } from "../scripts/zustand/store";
 
 const initialServerLoad = async () => {
-	console.log("----------------- initial server load STARTED -----------------");
+	// console.log("----------------- initial server load STARTED -----------------");
 
-	const initialState = useCombinedStore.getState();
-	console.log("initialState", initialState);
+	// const initialState = useCombinedStore.getState();
+	// console.log("initialState", initialState);
 
 	const session = await getServerSession(NextAuthConfig);
-	console.log("session", session);
+	// console.log("session", session);
 	if (!session) return;
 
 	const user = await prisma.user.findUnique({ where: { id: session.user.id } });
-	console.log("user", user);
+	// console.log("user", user);
 	if (!user) return;
 
 	const userSheets = await prisma.characterSheet.findMany({ where: { authorId: user.id } });
-	console.log("characterSheets", userSheets);
+	// console.log("characterSheets", userSheets);
 	if (!userSheets) return;
 
 	const previousState = useCombinedStore.getState();
-	console.log("previousState", previousState);
+	// console.log("previousState", previousState);
 	useCombinedStore.setState({
 		user: { ...previousState.user, ...user },
 		cSheets: { ...previousState.cSheets, userSheets },
 	});
-	const updatedStore = useCombinedStore.getState();
-	console.log("updatedStore", updatedStore);
+	// const updatedStore = useCombinedStore.getState();
+	// console.log("updatedStore", updatedStore);
 
-	console.log("----------------- initial server load FINISHED -----------------");
+	// console.log("----------------- initial server load FINISHED -----------------");
 };
 
 const RootLayout = async ({ children, session }: { children: React.ReactNode; session: any }) => {
