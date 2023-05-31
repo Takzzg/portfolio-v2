@@ -1,12 +1,13 @@
-import CSMannager from "../../components/CharacterSheet/CSMannager/CSMannager";
+import CSManager from "../../components/CharacterSheet/CSManager/CSManager";
 import CSEditor from "../../components/CharacterSheet/CSEditor/CSEditor";
+import styles from "./CharacterSheets.module.scss";
 
 type Props = {};
 
 const CharacterSheets = async (props: Props) => {
 	return (
-		<div>
-			<CSMannager />
+		<div className={styles.characterSheets}>
+			<CSManager />
 			<CSEditor />
 		</div>
 	);

@@ -1,0 +1,32 @@
+.hitpoints {
+  display: grid;
+  grid-template-areas:
+    "title   title "
+    "values  values"
+    "current maxHP ";
+  width: 300px;
+  // background-color: red;
+
+  .title {
+    grid-area: title;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .icon {
+      color: red;
+    }
+  }
+
+  .detailedValues {
+    grid-area: values;
+  }
+
+  .currentHP {
+    grid-area: current;
+  }
+
+  .maxHP {
+    grid-area: maxHP;
+  }
+}
