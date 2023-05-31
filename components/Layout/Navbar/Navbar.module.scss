@@ -5,18 +5,19 @@
 	width: 100%;
 	top: 0;
 	z-index: 10;
+	position: sticky;
 }
 
 .navbarContainer {
 	background-color: $navbar;
 	border-radius: 10px;
 	display: flex;
-	align-items: center;
+	// align-items: center;
 	justify-content: space-between;
+	overflow: hidden;
 }
 
 .navbarItems {
 	display: flex;
 	flex-wrap: wrap;
-	overflow: hidden;
 }

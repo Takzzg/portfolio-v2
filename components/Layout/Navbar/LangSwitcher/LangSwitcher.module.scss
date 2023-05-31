@@ -1,0 +1,30 @@
+.languageSwitcher {
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: 1rem;
+  color: grey;
+
+  .switcher {
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 1rem;
+      color: inherit;
+      cursor: pointer;
+      padding: 0.25rem;
+
+      &.activeLang {
+        color: lightgray;
+      }
+    }
+  }
+}

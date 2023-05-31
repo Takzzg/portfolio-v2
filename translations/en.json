@@ -4,6 +4,7 @@
 		"antColonyLink": "Ant Colony",
 		"conwaysLink": "Conway's",
 		"pathfinding": "Pathfinding",
-		"sorting": "Sorting"
+		"sorting": "Sorting",
+		"languageSwitcher": "Language"
 	}
 }

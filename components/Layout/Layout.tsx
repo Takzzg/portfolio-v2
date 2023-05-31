@@ -1,8 +1,5 @@
 import { ReactNode } from "react";
-
 import Navbar from "./Navbar/Navbar";
-import Footer from "./Footer/Footer";
-
 import styles from "./Layout.module.scss";
 import Disclaimer from "./Disclaimer/Disclaimer";
 
@@ -17,7 +14,6 @@ const Layout = ({ children }: Props) => {
 			<div className={styles.layout}>
 				<Navbar />
 				{children}
-				<Footer />
 			</div>
 		</>
 	);

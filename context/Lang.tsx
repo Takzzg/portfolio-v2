@@ -9,19 +9,50 @@ type Props = {
 	children: ReactNode;
 };
 
+type Language = {
+	value: string;
+	name: string;
+	flag: string;
+	translation: any;
+};
+
+export const AvailableLanguages: { [key: string]: any } = {
+	en: {
+		name: "English",
+		value: "en",
+		flag: "",
+	},
+	es: {
+		name: "Español",
+		value: "es",
+		flag: "",
+	},
+};
+
+const Translations: { [key: string]: Language } = {
+	en: {
+		...AvailableLanguages.en,
+		translation: en,
+	},
+	es: {
+		...AvailableLanguages.es,
+		translation: es,
+	},
+};
+
 export const langCtx = createContext({
-	lang: en,
-	changeLang: (val: "en" | "es") => {},
+	lang: Translations.en,
+	changeLang: (val: string) => {},
 });
 
 const LangProvider = ({ children }: Props) => {
-	const [lang, setLang] = useState<"en" | "es">("en");
+	const [lang, setLang] = useState(Translations.en);
 
 	return (
 		<langCtx.Provider
 			value={{
-				lang: lang === "en" ? en : es,
-				changeLang: (val) => setLang(val),
+				lang: Translations[lang.value],
+				changeLang: (val) => setLang(Translations[val]),
 			}}
 		>
 			{children}

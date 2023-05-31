@@ -6,13 +6,14 @@ import { usePathname } from "next/navigation";
 import { useContext } from "react";
 import { langCtx } from "../../../context/Lang";
 import NavbarUser from "../../User/NavBarUser/NavbarUser";
+import LangSwitcher from "./LangSwitcher/LangSwitcher";
 
 const Navbar = () => {
 	const pathname = usePathname();
-	const languageCtx = useContext(langCtx);
+	const lang = useContext(langCtx).lang.translation;
 
 	const buttons = [
-		{ href: "/home", title: languageCtx.lang.nav.homeLink },
+		{ href: "/home", title: lang.nav.homeLink },
 		{ href: "/conways", title: "Conway's" },
 		{ href: "/pathfinding", title: "Pathfinding" },
 		{ href: "/sorting", title: "Sorting" },
@@ -20,7 +21,7 @@ const Navbar = () => {
 	];
 
 	return (
-		<div className={styles.navbar} style={pathname === "/" ? { position: "fixed" } : { position: "sticky" }}>
+		<div className={styles.navbar}>
 			<div className={styles.navbarContainer}>
 				<div className={styles.navbarItems}>
 					{buttons.map((b, i) => (
@@ -29,28 +30,11 @@ const Navbar = () => {
 							href={b.href}
 							active={pathname === b.href}
 							title={b.title}
-							// color={`hsl(${(255 / buttons.length) * i}, 100%, 25%)`}
+							color={`hsl(${(255 / buttons.length) * (i + 1)}, 100%, 25%)`}
 						/>
 					))}
 				</div>
-
-				<div className={styles.language}>
-					<button
-						onClick={() => {
-							languageCtx.changeLang("es");
-						}}
-					>
-						Español
-					</button>
-					<button
-						onClick={() => {
-							languageCtx.changeLang("en");
-						}}
-					>
-						English
-					</button>
-				</div>
-
+				<LangSwitcher />
 				<NavbarUser />
 			</div>
 		</div>

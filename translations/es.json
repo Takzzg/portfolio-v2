@@ -4,6 +4,7 @@
 		"antColonyLink": "Colonia",
 		"conwaysLink": "Conway",
 		"pathfinding": "Laberintos",
-		"sorting": "Ordenamiento"
+		"sorting": "Ordenamiento",
+		"languageSwitcher": "Idioma"
 	}
 }

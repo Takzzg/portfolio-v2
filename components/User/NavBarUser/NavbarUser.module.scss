@@ -1,10 +1,23 @@
+.loginBtn {
+  padding: 0.5rem 1.5rem;
+  background-color: transparent;
+  border: none;
+  font-size: 1.125rem;
+  color: whitesmoke;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .navbarUser {
   display: grid;
   grid-template-areas:
     "name  image"
     "email image";
   align-items: center;
-  padding: 0.25rem;
+  padding: 0.5rem;
+  column-gap: 0.5rem;
 
   .name,
   .email {
@@ -21,9 +34,16 @@
 
   .image {
     grid-area: image;
-    height: 50px;
-    width: 50px;
     border-radius: 0.25rem;
     overflow: hidden;
+  }
+}
+
+.loginBtn,
+.navbarUser {
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color: #fff, $alpha: 0.1);
   }
 }
