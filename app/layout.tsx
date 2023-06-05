@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth";
 import { ContextProviders } from "./providers";
 import { NextAuthConfig } from "./api/auth/[...nextauth]/route";
 import { useCombinedStore } from "../scripts/zustand/store";
+import { Analytics } from "@vercel/analytics/react";
 
 const initialServerLoad = async () => {
 	// console.log("----------------- initial server load STARTED -----------------");
@@ -43,7 +44,10 @@ const RootLayout = async ({ children, session }: { children: React.ReactNode; se
 		<html lang="en">
 			<body>
 				<ContextProviders session={session}>
-					<Layout>{children}</Layout>
+					<Layout>
+						{children}
+						<Analytics />
+					</Layout>
 				</ContextProviders>
 			</body>
 		</html>
