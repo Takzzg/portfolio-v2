@@ -25,6 +25,13 @@
 			"@/types/*": ["types/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types/**/*.ts", ".next/types/**/*.ts"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"types/**/*.ts",
+		".next/types/**/*.ts",
+		"scripts/utilities/DeepCopy.js"
+	],
 	"exclude": ["node_modules"]
 }
