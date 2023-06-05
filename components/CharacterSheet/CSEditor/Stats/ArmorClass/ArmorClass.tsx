@@ -12,7 +12,7 @@ const ArmorClass = (props: Props) => {
 
 	return (
 		<PanelTemplate Icon={FaShieldAlt} iconColor="blue" title="Armor Class" className={styles.armorClass}>
-			ArmorClass
+			ArmorClass wtf
 		</PanelTemplate>
 	);
 };
