@@ -8,6 +8,7 @@ import styles from "./HitPoints.module.scss";
 import CurrentHP from "./CurrentHP/CurrentHP";
 import MaxHP from "./MaxHP/MaxHP";
 import PanelTemplate from "../../PanelTemplate/PanelTemplate";
+import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 
 type Props = HitPoints_I;
 
@@ -37,28 +38,28 @@ const HitPoints = (props: Props) => {
 	const displayMax = useTempMax ? hitpoints.temp.max.value : hitpoints.max;
 
 	const toggleTempValue = (key: HPkeys) => {
-		const hp: HitPoints_I = structuredClone(hitpoints);
+		const hp: HitPoints_I = DeepCopy(hitpoints);
 		hp.temp[key].enabled = !hp.temp[key].enabled;
 		const parsed = parseHPValues(hp);
 		setHitpoints(parsed);
 	};
 
 	const toggleOverride = () => {
-		const hp: HitPoints_I = structuredClone(hitpoints);
+		const hp: HitPoints_I = DeepCopy(hitpoints);
 		hp.temp.override = !hp.temp.override;
 		const parsed = parseHPValues(hp);
 		setHitpoints(parsed);
 	};
 
 	const modifyValue = (key: HPkeys, value: number) => {
-		const hp: HitPoints_I = structuredClone(hitpoints);
+		const hp: HitPoints_I = DeepCopy(hitpoints);
 		hp[key] = value;
 		const parsed = parseHPValues(hp);
 		setHitpoints(parsed);
 	};
 
 	const modifyTempValue = (key: HPkeys, value: number) => {
-		const hp: HitPoints_I = structuredClone(hitpoints);
+		const hp: HitPoints_I = DeepCopy(hitpoints);
 		hp.temp[key].value = value;
 		const parsed = parseHPValues(hp);
 		setHitpoints(parsed);

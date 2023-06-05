@@ -7,6 +7,7 @@ import Accordion from "@/components/UI/Accordion/Accordion";
 import { FaCamera, FaMale, FaScroll } from "react-icons/fa";
 import { IconType } from "react-icons";
 import Stats from "./Stats/Stats";
+import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 
 type Props = {};
 
@@ -35,7 +36,7 @@ const CSEditor = (props: Props) => {
 	const [expanded, setExpanded] = useState(initialState);
 
 	const toggleCategory = (key: string) => {
-		let copy = structuredClone(expanded);
+		let copy = DeepCopy(expanded);
 		copy[key] = !copy[key];
 		setExpanded(copy);
 	};
