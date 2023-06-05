@@ -1,22 +1,22 @@
 import React from "react";
-import Head from "next/head";
 import Subtitle from "../../components/Headers/Subtitle";
 
 import Section from "../../components/Section/Section";
 import styles from "./Home.module.scss";
 import Footer from "../../components/Layout/Footer/Footer";
+import { Metadata } from "next";
 
 type Props = {};
+
+export const metadata: Metadata = {
+	title: "Guido Queiroz",
+	description: "Guido Queiroz's Portfolio",
+	icons: "/favicon.ico",
+};
 
 const Page = (props: Props) => {
 	return (
 		<div className={styles.home}>
-			<Head>
-				<title>Guido Queiroz</title>
-				<meta name="description" content="Guido Queiroz's Portfolio" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
-
 			<div className={styles.mainCont}>
 				<div className={styles.mainTitle}>
 					<div className={`${styles.textAccent} ${styles.firstLine}`}>Hello.</div>

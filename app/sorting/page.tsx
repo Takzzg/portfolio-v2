@@ -1,19 +1,20 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Head from "next/head";
-
 import { FaPlay, FaRandom, FaSignal, FaStepForward, FaStop, FaUndo } from "react-icons/fa";
-
 import * as CanvasScript from "../../scripts/canvas/sortingCanvas";
 import Algorithms from "../../scripts/sorting/index";
-
 import styles from "./Sorting.module.scss";
 import Title from "../../components/Headers/Title";
 import Slider from "../../components/Slider/Slider";
 import AlgorithmSelect from "../../components/AlgoSelect/AlgoSelect";
 import { sortingAlgos } from "../../components/AlgoSelect/algoRefs";
 import Button from "../../components/Button/Button";
+// import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+// 	title: "Sorting Algorithms",
+// };
 
 const Sorting = () => {
 	const [itemCount, setItemCount] = useState<number>(20);
@@ -73,104 +74,86 @@ const Sorting = () => {
 	};
 
 	return (
-		<>
-			<Head>
-				<title>Sorting Algorithms</title>
-			</Head>
+		<div className={styles.mainContainer}>
+			<Title>Sorting Algorithms Visualization</Title>
 
-			<div className={styles.mainContainer}>
-				<Title>Sorting Algorithms Visualization</Title>
-
-				<div id={styles.canvasMain}>
-					<div id={styles.canvasContainer}>
-						<canvas id="sortingCanvas" />
+			<div id={styles.canvasMain}>
+				<div id={styles.canvasContainer}>
+					<canvas id="sortingCanvas" />
+				</div>
+				<div className={styles.controlsContainer}>
+					<div className={styles.slidersContainer}>
+						<Slider
+							label={"Item Count"}
+							min={10}
+							max={200}
+							step={5}
+							value={itemCount}
+							onChange={setItemCount}
+							onReset={setItemCount}
+						/>
+						<Slider
+							label={"Max Height"}
+							symbol="%"
+							min={10}
+							max={100}
+							step={5}
+							value={maxHeight}
+							onChange={setMaxHeight}
+							onReset={setMaxHeight}
+						/>
+						<Slider
+							label={"Animation Speed"}
+							symbol="ms"
+							min={0}
+							max={300}
+							step={10}
+							value={animSpeed}
+							onChange={setAnimSpeed}
+							onReset={setAnimSpeed}
+						/>
 					</div>
-					<div className={styles.controlsContainer}>
-						<div className={styles.slidersContainer}>
-							<Slider
-								label={"Item Count"}
-								min={10}
-								max={200}
-								step={5}
-								value={itemCount}
-								onChange={setItemCount}
-								onReset={setItemCount}
-							/>
-							<Slider
-								label={"Max Height"}
-								symbol="%"
-								min={10}
-								max={100}
-								step={5}
-								value={maxHeight}
-								onChange={setMaxHeight}
-								onReset={setMaxHeight}
-							/>
-							<Slider
-								label={"Animation Speed"}
-								symbol="ms"
-								min={0}
-								max={300}
-								step={10}
-								value={animSpeed}
-								onChange={setAnimSpeed}
-								onReset={setAnimSpeed}
-							/>
-						</div>
 
-						<AlgorithmSelect action={"Sort"} refs={sortingAlgos} postfix="Sort" />
+					<AlgorithmSelect action={"Sort"} refs={sortingAlgos} postfix="Sort" />
 
-						<div className={styles.actionsContainer}>
-							<Button
-								span={3}
-								value="Shuffle"
-								icon={<FaRandom />}
-								onClick={() => {
-									stopAnimation();
-									CanvasScript.shuffleArray();
-								}}
-								bg="orangered"
-							/>
-							<Button
-								span={3}
-								value="Reset"
-								icon={<FaUndo />}
-								onClick={() => {
-									stopAnimation();
-									CanvasScript.resetArray();
-								}}
-								bg="red"
-							/>
-							<Button
-								span={2}
-								value="Sort"
-								icon={<FaSignal />}
-								onClick={() => runAlgo("sort")}
-								bg="blue"
-							/>
-							<Button
-								span={2}
-								value="Step"
-								icon={<FaStepForward />}
-								onClick={() => runAlgo("step")}
-								bg="royalblue"
-							/>
-							{animPlaying ? (
-								<Button
-									span={2}
-									value="Stop"
-									icon={<FaStop />}
-									onClick={() => stopAnimation()}
-									bg="red"
-								/>
-							) : (
-								<Button span={2} value="Start" icon={<FaPlay />} onClick={() => animate()} bg="green" />
-							)}
-						</div>
+					<div className={styles.actionsContainer}>
+						<Button
+							span={3}
+							value="Shuffle"
+							icon={<FaRandom />}
+							onClick={() => {
+								stopAnimation();
+								CanvasScript.shuffleArray();
+							}}
+							bg="orangered"
+						/>
+						<Button
+							span={3}
+							value="Reset"
+							icon={<FaUndo />}
+							onClick={() => {
+								stopAnimation();
+								CanvasScript.resetArray();
+							}}
+							bg="red"
+						/>
+						<Button span={2} value="Sort" icon={<FaSignal />} onClick={() => runAlgo("sort")} bg="blue" />
+						<Button
+							span={2}
+							value="Step"
+							icon={<FaStepForward />}
+							onClick={() => runAlgo("step")}
+							bg="royalblue"
+						/>
+						{animPlaying ? (
+							<Button span={2} value="Stop" icon={<FaStop />} onClick={() => stopAnimation()} bg="red" />
+						) : (
+							<Button span={2} value="Start" icon={<FaPlay />} onClick={() => animate()} bg="green" />
+						)}
 					</div>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

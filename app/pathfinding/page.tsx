@@ -1,6 +1,5 @@
 "use client";
 
-import Head from "next/head";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
 	FaCheck,
@@ -25,11 +24,16 @@ import Button from "../../components/Button/Button";
 import { pathfindingAlgos } from "../../components/AlgoSelect/algoRefs";
 import Slider from "../../components/Slider/Slider";
 import BlockSelect from "../../components/BlockSelect/BlockSelect";
+// import { Metadata } from "next";
 
 interface solution {
 	history: CellHistory[];
 	path: { x: number; y: number }[];
 }
+
+// export const metadata: Metadata = {
+// 	title: "Pathfinding Algorithms",
+// };
 
 const Pathfinding = () => {
 	const canvas = useRef<HTMLCanvasElement>(null);
@@ -122,129 +126,123 @@ const Pathfinding = () => {
 	};
 
 	return (
-		<>
-			<Head>
-				<title>Pathfinding Algorithms</title>
-			</Head>
+		<div className={styles.mainContainer}>
+			<Title>Pathfinding Algorithms Visualization</Title>
 
-			<div className={styles.mainContainer}>
-				<Title>Pathfinding Algorithms Visualization</Title>
-
-				<div id={styles.canvasMain}>
-					<div className={styles.toolbarTop}>
-						<AlgorithmSelect action={"Generate Maze"} refs={pathfindingAlgos} flexDir="column" />
-						<Button
-							value="Randomize"
-							icon={<FaRandom />}
-							onClick={() => {
-								resetSolution();
-								while (!solution.current) {
-									PathfindingScript.generateMaze();
-									solution.current = PathfindingScript.solveGrid();
-								}
-							}}
-							bg={"orange"}
-						/>
-						<Button
-							value="Reset"
-							icon={<FaRedo />}
-							onClick={() => {
-								resetSolution();
-								PathfindingScript.clearGrid();
-							}}
-							bg={"red"}
-						/>
-						<div
-							className={styles.checkboxContainer}
-							onClick={() => {
-								setShowGrid(!showGrid);
-								CommonScripts.toggleGrid();
-							}}
-						>
-							<input type="checkbox" name="ShowGrid" id="showGrid" defaultChecked={showGrid} />
-							<label>Show Grid</label>
-						</div>
-						<Slider
-							label={"width"}
-							min={20}
-							max={100}
-							step={1}
-							value={width}
-							onChange={Setwidth}
-							onReset={Setwidth}
-						/>
-						<Slider
-							label={"height"}
-							min={10}
-							max={50}
-							step={1}
-							value={height}
-							onChange={setHeight}
-							onReset={setHeight}
-						/>
+			<div id={styles.canvasMain}>
+				<div className={styles.toolbarTop}>
+					<AlgorithmSelect action={"Generate Maze"} refs={pathfindingAlgos} flexDir="column" />
+					<Button
+						value="Randomize"
+						icon={<FaRandom />}
+						onClick={() => {
+							resetSolution();
+							while (!solution.current) {
+								PathfindingScript.generateMaze();
+								solution.current = PathfindingScript.solveGrid();
+							}
+						}}
+						bg={"orange"}
+					/>
+					<Button
+						value="Reset"
+						icon={<FaRedo />}
+						onClick={() => {
+							resetSolution();
+							PathfindingScript.clearGrid();
+						}}
+						bg={"red"}
+					/>
+					<div
+						className={styles.checkboxContainer}
+						onClick={() => {
+							setShowGrid(!showGrid);
+							CommonScripts.toggleGrid();
+						}}
+					>
+						<input type="checkbox" name="ShowGrid" id="showGrid" defaultChecked={showGrid} />
+						<label>Show Grid</label>
 					</div>
-					<div id={styles.canvasContainer}>
-						<canvas
-							ref={canvas}
-							onMouseDown={(event) => {
-								stopAnim();
-								resetSolution();
-								setPainting(true);
+					<Slider
+						label={"width"}
+						min={20}
+						max={100}
+						step={1}
+						value={width}
+						onChange={Setwidth}
+						onReset={Setwidth}
+					/>
+					<Slider
+						label={"height"}
+						min={10}
+						max={50}
+						step={1}
+						value={height}
+						onChange={setHeight}
+						onReset={setHeight}
+					/>
+				</div>
+				<div id={styles.canvasContainer}>
+					<canvas
+						ref={canvas}
+						onMouseDown={(event) => {
+							stopAnim();
+							resetSolution();
+							setPainting(true);
+							PathfindingScript.placeBlock(event, selectedBlock);
+							CommonScripts.setLastMousePos(event);
+						}}
+						onMouseUp={() => {
+							setPainting(false);
+							CommonScripts.resetLastMousePos();
+							solution.current = PathfindingScript.solveGrid();
+						}}
+						onMouseLeave={() => {
+							setPainting(false);
+							CommonScripts.resetLastMousePos();
+						}}
+						onMouseMove={(event) => {
+							if (painting) {
 								PathfindingScript.placeBlock(event, selectedBlock);
 								CommonScripts.setLastMousePos(event);
+							}
+						}}
+					/>
+				</div>
+				<div className={styles.toolbarBottom}>
+					<div className={styles.algoControls}>
+						<AlgorithmSelect action={"Solve"} refs={pathfindingAlgos} flexDir="column" />
+						<Button
+							value="Clear"
+							icon={<FaEraser />}
+							onClick={() => {
+								resetSolution();
+								PathfindingScript.resetVisited();
 							}}
-							onMouseUp={() => {
-								setPainting(false);
-								CommonScripts.resetLastMousePos();
-								solution.current = PathfindingScript.solveGrid();
-							}}
-							onMouseLeave={() => {
-								setPainting(false);
-								CommonScripts.resetLastMousePos();
-							}}
-							onMouseMove={(event) => {
-								if (painting) {
-									PathfindingScript.placeBlock(event, selectedBlock);
-									CommonScripts.setLastMousePos(event);
-								}
-							}}
+							bg={"orangered"}
 						/>
+						<Button
+							value="Solve"
+							icon={<FaCheck />}
+							onClick={() => {
+								if (!solution.current) solution.current = PathfindingScript.solveGrid();
+								if (!solution.current) return alert("Maze has no solution");
+								resetSolution();
+								PathfindingScript.resetVisited();
+								solve();
+							}}
+							bg={"blue"}
+						/>
+						{animPlaying ? (
+							<Button value="Stop" icon={<FaStop />} onClick={stopAnim} bg={"red"} />
+						) : (
+							<Button value="Animate" icon={<FaPlay />} onClick={animate} bg={"green"} />
+						)}
 					</div>
-					<div className={styles.toolbarBottom}>
-						<div className={styles.algoControls}>
-							<AlgorithmSelect action={"Solve"} refs={pathfindingAlgos} flexDir="column" />
-							<Button
-								value="Clear"
-								icon={<FaEraser />}
-								onClick={() => {
-									resetSolution();
-									PathfindingScript.resetVisited();
-								}}
-								bg={"orangered"}
-							/>
-							<Button
-								value="Solve"
-								icon={<FaCheck />}
-								onClick={() => {
-									if (!solution.current) solution.current = PathfindingScript.solveGrid();
-									if (!solution.current) return alert("Maze has no solution");
-									resetSolution();
-									PathfindingScript.resetVisited();
-									solve();
-								}}
-								bg={"blue"}
-							/>
-							{animPlaying ? (
-								<Button value="Stop" icon={<FaStop />} onClick={stopAnim} bg={"red"} />
-							) : (
-								<Button value="Animate" icon={<FaPlay />} onClick={animate} bg={"green"} />
-							)}
-						</div>
-						<BlockSelect selectedBlock={selectedBlock} onClick={setSelectedBlock} options={options} />
-					</div>
+					<BlockSelect selectedBlock={selectedBlock} onClick={setSelectedBlock} options={options} />
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 
