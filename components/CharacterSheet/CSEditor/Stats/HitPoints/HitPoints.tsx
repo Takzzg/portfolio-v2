@@ -7,7 +7,7 @@ import { HitPoints_I } from "@/types/csEditor/characterSheet";
 import styles from "./HitPoints.module.scss";
 import CurrentHP from "./CurrentHP/CurrentHP";
 import MaxHP from "./MaxHP/MaxHP";
-import PanelTemplate from "../PanelTemplate/PanelTemplate";
+import PanelTemplate from "../../PanelTemplate/PanelTemplate";
 
 type Props = HitPoints_I;
 

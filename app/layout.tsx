@@ -2,7 +2,7 @@ import Layout from "../components/Layout/Layout";
 import "../styles/common/globals.scss";
 import { prisma } from "../scripts/db/prisma";
 import { getServerSession } from "next-auth";
-import { NextAuthProvider } from "./providers";
+import { ContextProviders } from "./providers";
 import { NextAuthConfig } from "./api/auth/[...nextauth]/route";
 import { useCombinedStore } from "../scripts/zustand/store";
 
@@ -42,9 +42,9 @@ const RootLayout = async ({ children, session }: { children: React.ReactNode; se
 	return (
 		<html lang="en">
 			<body>
-				<NextAuthProvider session={session}>
+				<ContextProviders session={session}>
 					<Layout>{children}</Layout>
-				</NextAuthProvider>
+				</ContextProviders>
 			</body>
 		</html>
 	);

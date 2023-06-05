@@ -9,7 +9,7 @@ type Props = {
 	session: Session;
 };
 
-export const NextAuthProvider = ({ children, session }: Props) => {
+export const ContextProviders = ({ children, session }: Props) => {
 	return (
 		<SessionProvider session={session}>
 			<LangProvider>{children}</LangProvider>

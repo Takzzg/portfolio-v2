@@ -1,0 +1,25 @@
+.accordion {
+  // display: flex;
+  // flex-direction: column;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    border: 1px solid dimgray;
+
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.25);
+    }
+  }
+
+  .body {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem;
+    overflow: hidden;
+  }
+}
