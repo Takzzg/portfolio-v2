@@ -1,18 +1,22 @@
+"use client";
+
 import React from "react";
 import Subtitle from "../../components/Headers/Subtitle";
 
 import Section from "../../components/Section/Section";
 import styles from "./Home.module.scss";
 import Footer from "../../components/Layout/Footer/Footer";
-import { Metadata } from "next";
+import reportWebVitals from "@/scripts/vercel/reportWebVitals";
+import { sendToVercelAnalytics } from "@/scripts/vercel/vitals";
+// import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+// 	title: "Guido Queiroz",
+// 	description: "Guido Queiroz's Portfolio",
+// 	icons: "/favicon.ico",
+// };
 
 type Props = {};
-
-export const metadata: Metadata = {
-	title: "Guido Queiroz",
-	description: "Guido Queiroz's Portfolio",
-	icons: "/favicon.ico",
-};
 
 const Page = (props: Props) => {
 	return (
@@ -55,5 +59,7 @@ const Page = (props: Props) => {
 		</div>
 	);
 };
+
+reportWebVitals(sendToVercelAnalytics);
 
 export default Page;
