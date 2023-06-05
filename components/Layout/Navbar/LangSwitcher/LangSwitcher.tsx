@@ -7,7 +7,7 @@ type Props = {};
 const LangSwitcher = (props: Props) => {
 	const languageCtx = useContext(langCtx);
 
-	console.log("Object.keys(AvailableLanguages)", Object.keys(AvailableLanguages));
+	// console.log("Object.keys(AvailableLanguages)", Object.keys(AvailableLanguages));
 
 	return (
 		<div className={styles.languageSwitcher}>

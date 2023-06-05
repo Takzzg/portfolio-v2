@@ -9,7 +9,7 @@ type Props = {};
 
 const CSManager = (props: Props) => {
 	const cSheetStore = useCombinedStore((state) => state.cSheets);
-	console.log("cSheetStore.userSheets", cSheetStore.userSheets);
+	// console.log("cSheetStore.userSheets", cSheetStore.userSheets);
 
 	return (
 		<div className={styles.sheetManager}>

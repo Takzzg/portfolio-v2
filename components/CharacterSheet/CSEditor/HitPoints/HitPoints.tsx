@@ -1,87 +1,141 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
+
 import { HitPoints_I } from "@/types/csEditor/characterSheet";
 import styles from "./HitPoints.module.scss";
+import CurrentHP from "./CurrentHP/CurrentHP";
+import MaxHP from "./MaxHP/MaxHP";
+import PanelTemplate from "../PanelTemplate/PanelTemplate";
 
 type Props = HitPoints_I;
 
-type hpKeys = "current" | "max";
+type HPkeys = "current" | "max";
+
+const parseHPValues = (hp: HitPoints_I): HitPoints_I => {
+	const useTempMax = hp.temp.override && hp.temp.max.enabled;
+	const displayMax = useTempMax ? hp.temp.max.value : hp.max;
+
+	if (hp.current > displayMax) hp.current = displayMax;
+	if (hp.current < -10) hp.current = -10;
+	if (hp.temp.current.value > displayMax) hp.temp.current.value = displayMax;
+	if (hp.temp.current.value < -10) hp.temp.current.value = -10;
+
+	if (hp.max < 0) hp.max = 0;
+	if (hp.temp.max.value < 0) hp.temp.max.value = 0;
+
+	return hp;
+};
 
 const HitPoints = (props: Props) => {
-	const [hitpoints, setHitpoints] = useState(props);
-	const maxValueUsed = () => {
-		if (hitpoints.temp.override) return hitpoints.max;
-		if (hitpoints.temp.max.enabled) return hitpoints.temp.max.value;
-		return hitpoints.max;
-	};
+	const [hitpoints, setHitpoints] = useState(parseHPValues(props));
 
-	const toggleTempValue = (key: hpKeys) => {
-		const hp = { ...hitpoints };
+	const useTempCurrent = hitpoints.temp.override && hitpoints.temp.current.enabled;
+	const useTempMax = hitpoints.temp.override && hitpoints.temp.max.enabled;
+
+	const displayMax = useTempMax ? hitpoints.temp.max.value : hitpoints.max;
+
+	const toggleTempValue = (key: HPkeys) => {
+		const hp: HitPoints_I = structuredClone(hitpoints);
 		hp.temp[key].enabled = !hp.temp[key].enabled;
-		setHitpoints(hp);
+		const parsed = parseHPValues(hp);
+		setHitpoints(parsed);
 	};
 
 	const toggleOverride = () => {
-		const hp = { ...hitpoints };
+		const hp: HitPoints_I = structuredClone(hitpoints);
 		hp.temp.override = !hp.temp.override;
-		setHitpoints(hp);
+		const parsed = parseHPValues(hp);
+		setHitpoints(parsed);
 	};
 
-	const modifyValue = (key: hpKeys, value: number) => {
-		const hp = { ...hitpoints };
+	const modifyValue = (key: HPkeys, value: number) => {
+		const hp: HitPoints_I = structuredClone(hitpoints);
 		hp[key] = value;
-		setHitpoints(hp);
+		const parsed = parseHPValues(hp);
+		setHitpoints(parsed);
 	};
 
-	const modifyTempValue = (key: hpKeys, value: number) => {
-		const hp = { ...hitpoints };
+	const modifyTempValue = (key: HPkeys, value: number) => {
+		const hp: HitPoints_I = structuredClone(hitpoints);
 		hp.temp[key].value = value;
-		setHitpoints(hp);
+		const parsed = parseHPValues(hp);
+		setHitpoints(parsed);
 	};
 
 	return (
-		<div className={styles.hitpoints}>
-			<div className={styles.title}>
-				<div className={styles.icon}>
-					<FaHeart />
-				</div>
-				Hit Points
-			</div>
+		<PanelTemplate className={styles.hitpoints} Icon={FaHeart} iconColor="red" title={"Hit Points"}>
+			<div className={styles.detailedValues}>--- Detailed Values ---</div>
 
-			<div className={styles.detailedValues}>explained values</div>
-
-			<div className={styles.normalValues}>
-				<div className={styles.current}>
-					<button onClick={() => modifyValue("current", hitpoints.current + 1)}>+</button>
-					{hitpoints.current} / {maxValueUsed()}
-					<button onClick={() => modifyValue("current", hitpoints.current - 1)}>-</button>
+			<span className={styles.grid}>
+				<div className={styles.gridHeaders}>
+					<span className={styles.header}>
+						Current
+						<input
+							type="checkbox"
+							name="toggleTempCurrent"
+							id="toggleTempCurrent"
+							disabled={!hitpoints.temp.override}
+							className={styles.toggleTempCurrent}
+							checked={hitpoints.temp.current.enabled}
+							onChange={() => toggleTempValue("current")}
+						/>
+					</span>
+					<span className={styles.header}>
+						Max
+						<input
+							type="checkbox"
+							name="toggleTempMax"
+							id="toggleTempMax"
+							disabled={!hitpoints.temp.override}
+							className={styles.toggleTempMax}
+							checked={hitpoints.temp.max.enabled}
+							onChange={() => toggleTempValue("max")}
+						/>
+					</span>
 				</div>
-
-				<div className={styles.max}>
-					<button onClick={() => modifyValue("max", hitpoints.max + 1)}>+</button>
-					{hitpoints.max}
-					<button onClick={() => modifyValue("max", hitpoints.max - 1)}>-</button>
+				<div className={styles.normalValues}>
+					<CurrentHP
+						current={hitpoints.current}
+						max={displayMax}
+						disabled={useTempCurrent}
+						onIncrease={() => modifyValue("current", hitpoints.current + 1)}
+						onDecrease={() => modifyValue("current", hitpoints.current - 1)}
+					/>
+					<MaxHP
+						value={hitpoints.max}
+						disabled={useTempMax}
+						onIncrease={() => modifyValue("max", hitpoints.max + 1)}
+						onDecrease={() => modifyValue("max", hitpoints.max - 1)}
+					/>
 				</div>
-			</div>
-
-			<div className={styles.tempValues}>
-				<button onClick={toggleOverride}>override</button> {`${hitpoints.temp.override}`}
-				<div className={styles.current}>
-					<button onClick={() => toggleTempValue("current")}>enabled</button>
-					{`${hitpoints.temp.current.enabled}`}
-					<button onClick={() => modifyTempValue("current", hitpoints.temp.current.value + 1)}>+</button>
-					{hitpoints.temp.current.value} / {maxValueUsed()}
-					<button onClick={() => modifyTempValue("current", hitpoints.temp.current.value - 1)}>-</button>
+				<div className={styles.tempValues}>
+					<CurrentHP
+						current={hitpoints.temp.current.value}
+						max={displayMax}
+						disabled={!useTempCurrent}
+						onIncrease={() => modifyTempValue("current", hitpoints.temp.current.value + 1)}
+						onDecrease={() => modifyTempValue("current", hitpoints.temp.current.value - 1)}
+					/>
+					<MaxHP
+						value={hitpoints.temp.max.value}
+						disabled={!useTempMax}
+						onIncrease={() => modifyTempValue("max", hitpoints.temp.max.value + 1)}
+						onDecrease={() => modifyTempValue("max", hitpoints.temp.max.value - 1)}
+					/>
+					<span className={styles.tempOverride}>
+						<input
+							type="checkbox"
+							name="tempOverride"
+							id="tempOverride"
+							checked={hitpoints.temp.override}
+							onChange={toggleOverride}
+						/>
+					</span>
 				</div>
-				<div className={styles.max}>
-					<button onClick={() => toggleTempValue("max")}>enabled</button>
-					{`${hitpoints.temp.max.enabled}`}
-					<button onClick={() => modifyTempValue("max", hitpoints.temp.max.value + 1)}>+</button>
-					{hitpoints.temp.max.value}
-					<button onClick={() => modifyTempValue("max", hitpoints.temp.max.value - 1)}>-</button>
-				</div>
-			</div>
-		</div>
+			</span>
+		</PanelTemplate>
 	);
 };
 

@@ -1,0 +1,5 @@
+@use '../_HPcommons.scss' as commons;
+
+.max {
+  @include commons.HPcommonBtn();
+}

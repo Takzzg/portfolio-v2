@@ -1,5 +1,7 @@
 # About this project
 
+[Trello Board](https://trello.com/b/co1ZIY27/portfolio-v2)
+
 This is a personal web portfolio I've developed on my free time, to showcase my side projects and make them accesible on the internet. The current plan for this webpage consists on having the following sections:
 
 ## Home page[^2]
