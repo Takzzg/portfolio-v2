@@ -22,7 +22,7 @@ const Accordion = (props: Props) => {
 				</span>
 				<ExpandBtn expanded={expanded} onToggleExpand={() => onToggleAccordion()} />
 			</span>
-			<span className={`${styles.body} ${expanded && styles.hidden}`}>{children || "CONTENIDO"}</span>
+			<span className={`${styles.body} ${!expanded && styles.hidden}`}>{children || "CONTENIDO"}</span>
 		</div>
 	);
 };
