@@ -60,6 +60,6 @@ const Page = (props: Props) => {
 	);
 };
 
-reportWebVitals(sendToVercelAnalytics);
+// reportWebVitals(sendToVercelAnalytics);
 
 export default Page;
