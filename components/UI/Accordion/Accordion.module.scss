@@ -19,7 +19,12 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin: 0.5rem;
+    padding: 0.5rem;
     overflow: hidden;
+
+    &.hidden {
+      padding: 0;
+      height: 0;
+    }
   }
 }
