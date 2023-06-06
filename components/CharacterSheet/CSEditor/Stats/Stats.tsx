@@ -8,10 +8,10 @@ type Props = {};
 
 const Stats = (props: Props) => {
 	return (
-		<div>
+		<>
 			<HitPoints {...testSheet.character.stats.hp} />
 			<ArmorClass {...testSheet.character.stats.ac} />
-		</div>
+		</>
 	);
 };
 

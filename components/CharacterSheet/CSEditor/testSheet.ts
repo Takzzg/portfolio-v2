@@ -37,10 +37,24 @@ const testSheet: CharacterSheet_I = {
 			},
 			ac: {
 				value: 15,
-				modifier: {
-					value: 5,
-					enabled: false,
-				},
+				modifiers: [
+					{
+						value: 5,
+						enabled: true,
+						description: {
+							source: "Dex",
+							text: "you get a bonus equal to your Dex modifier",
+						},
+					},
+					{
+						value: 2,
+						enabled: false,
+						description: {
+							source: "Wild shape",
+							text: "you get +2 CA when you are in wild shape",
+						},
+					},
+				],
 			},
 			abilities: {
 				str: {},

@@ -14,14 +14,14 @@ const PanelTemplate = (props: Props) => {
 	const { title, Icon, iconColor, children, className } = props;
 
 	return (
-		<div className={`${styles.panelTemplate} ${className}`}>
+		<div className={styles.panelTemplate}>
 			<span className={styles.title}>
 				<span className={styles.icon} style={{ color: iconColor || "inherit" }}>
 					{<Icon />}
 				</span>
 				<span className={styles.text}>{title}</span>
 			</span>
-			<span className={styles.content}>{children}</span>
+			<span className={`${styles.content} ${className}`}>{children}</span>
 		</div>
 	);
 };

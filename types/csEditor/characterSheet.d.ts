@@ -14,9 +14,14 @@ type CharacterData_I = {
 
 type CharacterStats_I = {
 	hp: HitPoints_I;
-	ac: any;
+	ac: ArmorClass_I;
 	initiative: any;
 	abilities: any;
+};
+
+export type ArmorClass_I = {
+	value: 15;
+	modifiers: StatModifier[];
 };
 
 export type HitPoints_I = {
@@ -32,5 +37,14 @@ export type HitPoints_I = {
 			value: number;
 			enabled: boolean;
 		};
+	};
+};
+
+export type StatModifier = {
+	value: number;
+	enabled: boolean;
+	description: {
+		source: string;
+		text: string;
 	};
 };

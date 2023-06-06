@@ -1,0 +1,29 @@
+.armorClass {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .totalCA {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+  }
+
+  .modifiers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+
+    .mod {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      &.disabled {
+        color: dimgray;
+      }
+    }
+  }
+}
