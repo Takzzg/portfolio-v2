@@ -1,0 +1,23 @@
+.condensed {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 0.25rem;
+
+  .header {
+    color: dimgray;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    justify-content: center;
+  }
+
+  .value,
+  .mod {
+    text-align: center;
+  }
+}

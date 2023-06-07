@@ -1,3 +1,16 @@
+// ---------------------------------- Utils ----------------------------------
+
+export type StatModifier = {
+	value: number;
+	enabled: boolean;
+	description: {
+		source: string;
+		text: string;
+	};
+};
+
+// ---------------------------------- Character Sheet ----------------------------------
+
 export type CharacterSheet_I = {
 	title: string;
 	image: string;
@@ -16,13 +29,10 @@ type CharacterStats_I = {
 	hp: HitPoints_I;
 	ac: ArmorClass_I;
 	initiative: any;
-	abilities: any;
+	abilities: Abilities_I;
 };
 
-export type ArmorClass_I = {
-	value: 15;
-	modifiers: StatModifier[];
-};
+// ---------------------------------- Stats ----------------------------------
 
 export type HitPoints_I = {
 	current: number;
@@ -40,11 +50,22 @@ export type HitPoints_I = {
 	};
 };
 
-export type StatModifier = {
+export type ArmorClass_I = {
+	value: 15;
+	modifiers: StatModifier[];
+};
+
+type Ability_I = {
+	key: string;
 	value: number;
-	enabled: boolean;
-	description: {
-		source: string;
-		text: string;
-	};
+	modifiers: StatModifier[];
+};
+
+export type Abilities_I = {
+	str: Ability_I;
+	dex: Ability_I;
+	con: Ability_I;
+	int: Ability_I;
+	wis: Ability_I;
+	cha: Ability_I;
 };

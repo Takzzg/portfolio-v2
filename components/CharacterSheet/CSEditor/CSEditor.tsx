@@ -4,10 +4,11 @@
 import React, { useState } from "react";
 import styles from "./CSEditor.module.scss";
 import Accordion from "@/components/UI/Accordion/Accordion";
-import { FaCamera, FaMale, FaScroll } from "react-icons/fa";
+import { FaMale, FaScroll } from "react-icons/fa";
 import { IconType } from "react-icons";
 import Stats from "./Stats/Stats";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
+import Abilities from "./Abilities/Abilities";
 
 type Props = {};
 
@@ -19,9 +20,9 @@ type CSEditorCategory = {
 };
 
 const categories: CSEditorCategory[] = [
-	{ key: "image", title: "Image", Icon: FaCamera, children: undefined },
 	{ key: "desc", title: "Description", Icon: FaMale, children: undefined },
 	{ key: "stats", title: "Stats", Icon: FaMale, children: <Stats /> },
+	{ key: "abilities", title: "Abilities", Icon: FaMale, children: <Abilities /> },
 	{ key: "spells", title: "Spells", Icon: FaScroll, children: undefined },
 	{ key: "feats", title: "Feats", Icon: FaMale, children: undefined },
 ];

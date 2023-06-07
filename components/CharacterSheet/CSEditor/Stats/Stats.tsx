@@ -7,10 +7,12 @@ import ArmorClass from "./ArmorClass/ArmorClass";
 type Props = {};
 
 const Stats = (props: Props) => {
+	const { hp, ac } = testSheet.character.stats;
+
 	return (
 		<>
-			<HitPoints {...testSheet.character.stats.hp} />
-			<ArmorClass {...testSheet.character.stats.ac} />
+			<HitPoints {...hp} />
+			<ArmorClass {...ac} />
 		</>
 	);
 };

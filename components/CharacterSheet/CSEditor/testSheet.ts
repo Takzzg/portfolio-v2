@@ -51,18 +51,31 @@ const testSheet: CharacterSheet_I = {
 						enabled: false,
 						description: {
 							source: "Wild shape",
-							text: "you get +2 CA when you are in wild shape",
+							text: "you get +2 CA while you are in wild shape",
 						},
 					},
 				],
 			},
 			abilities: {
-				str: {},
-				dex: {},
-				con: {},
-				int: {},
-				wis: {},
-				cha: {},
+				str: {
+					key: "str",
+					value: 11,
+					modifiers: [
+						{
+							value: -2,
+							enabled: false,
+							description: {
+								source: "Wild shape",
+								text: "you get -2 to Strength while you are in wild shape",
+							},
+						},
+					],
+				},
+				dex: { key: "dex", value: 11, modifiers: [] },
+				con: { key: "con", value: 11, modifiers: [] },
+				int: { key: "int", value: 11, modifiers: [] },
+				wis: { key: "wis", value: 11, modifiers: [] },
+				cha: { key: "cha", value: 11, modifiers: [] },
 			},
 			initiative: {},
 		},
