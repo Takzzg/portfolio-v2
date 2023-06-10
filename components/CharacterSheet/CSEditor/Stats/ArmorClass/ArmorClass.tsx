@@ -1,42 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { FaShieldAlt } from "react-icons/fa";
 import styles from "./ArmorClass.module.scss";
-import PanelTemplate from "../../PanelTemplate/PanelTemplate";
+import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
-import { ArmorClass_I, StatModifier } from "@/types/csEditor/characterSheet";
-import ModifierList from "../../ModifierList/ModifierList";
-
-const BASE_CA = 10;
+import { ArmorClass_I, CharacterSheet_I, StatModifier } from "@/types/csEditor/characterSheet";
+import ModifierList from "../../../ModifierList/ModifierList";
+import { useCombinedStore } from "@/zustand/store";
 
 const calculateTotalCA = (modifiers: StatModifier[]) => {
-	let totalCA = BASE_CA;
+	let totalCA = 0;
 	if (modifiers) modifiers.forEach((mod) => mod.enabled && (totalCA += mod.value));
 	return totalCA;
 };
 
-type Props = ArmorClass_I;
+type Props = {};
 
 const ArmorClass = (props: Props) => {
-	const { modifiers } = props;
+	const editingCS = useCombinedStore((state) => state.cSheets.editingSheet);
+	const setEditingCS = useCombinedStore((state) => state.cSheets.setEditingSheet);
 
-	const [CAmodifiers, setCAmodifiers] = useState(modifiers || []);
-	const [totalCA, setTotalCA] = useState(calculateTotalCA(CAmodifiers));
+	if (!editingCS) return <div>Loading...</div>;
 
-	const toggleMod = (source: string) => {
-		let copy: StatModifier[] = DeepCopy(CAmodifiers);
-		let mod = copy.find((m: StatModifier) => m.description.source === source)!;
+	const armorClass = editingCS.character.stats.ac;
+
+	const toggleModifier = (source: string) => {
+		const acCopy: ArmorClass_I = DeepCopy(armorClass);
+		const mod = acCopy.modifiers.find((m) => m.description.source === source);
+		if (!mod) return;
+
 		mod.enabled = !mod.enabled;
+		acCopy.value = calculateTotalCA(acCopy.modifiers);
 
-		setCAmodifiers(copy);
-		setTotalCA(calculateTotalCA(copy));
+		const editingCopy: CharacterSheet_I = DeepCopy(editingCS);
+		editingCopy.character.stats.ac = acCopy;
+		setEditingCS(editingCopy);
 	};
 
 	return (
 		<PanelTemplate Icon={FaShieldAlt} iconColor="blue" title="Armor Class" className={styles.armorClass}>
-			<span className={styles.totalCA}>Total: {totalCA}</span>
-			<ModifierList modifiers={CAmodifiers} toggleMod={toggleMod} />
+			<span className={styles.totalCA}>Total: {armorClass.value}</span>
+			<ModifierList modifiers={armorClass.modifiers} toggleModifier={toggleModifier} />
 		</PanelTemplate>
 	);
 };

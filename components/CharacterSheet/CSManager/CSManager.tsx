@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useCombinedStore } from "../../../zustand/store";
+import { useCombinedStore } from "@/zustand/store";
 import { FaPlus } from "react-icons/fa";
 import styles from "./CSManager.module.scss";
 

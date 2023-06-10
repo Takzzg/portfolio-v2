@@ -1,3 +1,4 @@
+import { CharacterSheet_I } from "@/types/csEditor/characterSheet";
 import { StateCreator } from "zustand";
 
 export interface UserState_I {
@@ -13,12 +14,12 @@ export interface UserActions_I {
 
 export interface CSheetsState_I {
 	userSheets: any[];
-	editingSheet: any;
+	editingSheet: CharacterSheet_I | null;
 }
 
 export interface CSheetsActions_I {
 	setUserSheets: (value: any[]) => void;
-	setEditingSheet: (value: string) => void;
+	setEditingSheet: (value: CharacterSheet_I) => void;
 }
 
 export type UserStateType = UserActions_I & UserState_I;

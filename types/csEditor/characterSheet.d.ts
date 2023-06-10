@@ -34,6 +34,8 @@ type CharacterStats_I = {
 
 // ---------------------------------- Stats ----------------------------------
 
+export type HitPointKey_I = "current" | "max";
+
 export type HitPoints_I = {
 	current: number;
 	max: number;
@@ -50,8 +52,17 @@ export type HitPoints_I = {
 	};
 };
 
+const BaseArmorClass: StatModifier = {
+	value: "10",
+	enabled: true,
+	description: {
+		source: "base armor class",
+		text: "base armor class",
+	},
+};
+
 export type ArmorClass_I = {
-	value: 15;
+	value: number;
 	modifiers: StatModifier[];
 };
 
@@ -60,6 +71,9 @@ type Ability_I = {
 	value: number;
 	modifiers: StatModifier[];
 };
+
+export type AbilityKey_I = "str" | "dex" | "con" | "int" | "wis" | "cha";
+// export const AbilityKeys: AbilityKey_I[] = ["str", "dex", "con", "int", "wis", "cha"];
 
 export type Abilities_I = {
 	str: Ability_I;

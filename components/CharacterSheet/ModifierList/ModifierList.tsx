@@ -3,10 +3,10 @@ import React from "react";
 import styles from "./ModifierList.module.scss";
 import { FaInfoCircle } from "react-icons/fa";
 
-type Props = { modifiers: StatModifier[]; toggleMod: Function };
+type Props = { modifiers: StatModifier[]; toggleModifier: Function };
 
 const ModifierList = (props: Props) => {
-	const { modifiers, toggleMod } = props;
+	const { modifiers, toggleModifier } = props;
 	if (!modifiers) return null;
 
 	return (
@@ -25,7 +25,7 @@ const ModifierList = (props: Props) => {
 							name="enabled"
 							id={mod.description.source}
 							checked={mod.enabled}
-							onChange={() => toggleMod(mod.description.source)}
+							onChange={() => toggleModifier(mod.description.source)}
 						/>
 					</span>
 				</span>

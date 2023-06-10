@@ -1,10 +1,13 @@
+"use client";
+
 import React from "react";
 import styles from "./Condensed.module.scss";
 import { Abilities_I } from "@/types/csEditor/characterSheet";
 import { FaMale } from "react-icons/fa";
-import PanelTemplate from "../../PanelTemplate/PanelTemplate";
+import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
+import { useCombinedStore } from "@/zustand/store";
 
-type Props = Abilities_I;
+type Props = {};
 
 const calculateBaseModifier = (value: number) => {
 	let mod = Math.ceil((value - 10) / 2);
@@ -13,20 +16,25 @@ const calculateBaseModifier = (value: number) => {
 };
 
 const Condensed = (props: Props) => {
+	const abilities = useCombinedStore((state) => state.cSheets.editingSheet?.character.stats.abilities);
+	console.log("condensed", abilities);
+
+	if (!abilities) return <div>Loading...</div>;
+
 	return (
 		<PanelTemplate Icon={FaMale} className={styles.condensed} title="Condensed">
 			<span className={styles.header}>Ability</span>
 			<span className={styles.header}>Value</span>
 			<span className={styles.header}>Modifier</span>
 
-			{Object.keys(props).map((key) => {
+			{Object.keys(abilities).map((key) => {
 				let abilityKey = key as keyof Abilities_I;
 
 				return (
 					<React.Fragment key={key}>
 						<span className={styles.title}>{abilityKey}</span>
-						<span className={styles.value}>{props[abilityKey].value}</span>
-						<span className={styles.mod}>{calculateBaseModifier(props[abilityKey].value)}</span>
+						<span className={styles.value}>{abilities[abilityKey].value}</span>
+						<span className={styles.mod}>{calculateBaseModifier(abilities[abilityKey].value)}</span>
 					</React.Fragment>
 				);
 			})}

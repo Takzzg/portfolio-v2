@@ -22,7 +22,8 @@
 			"@/prisma/*": ["prisma/*"],
 			"@/scripts/*": ["scripts/*"],
 			"@/styles/*": ["styles/*"],
-			"@/types/*": ["types/*"]
+			"@/types/*": ["types/*"],
+			"@/zustand/*": ["zustand/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types/**/*.ts", ".next/types/**/*.ts", "scripts/**/*.js"],

@@ -4,8 +4,8 @@ import { prisma } from "../scripts/db/prisma";
 import { getServerSession } from "next-auth";
 import { ContextProviders } from "./providers";
 import { NextAuthConfig } from "./api/auth/[...nextauth]/route";
-import { useCombinedStore } from "../zustand/store";
 import { Analytics } from "@vercel/analytics/react";
+import { useCombinedStore } from "@/zustand/store";
 
 const initialServerLoad = async () => {
 	// console.log("----------------- initial server load STARTED -----------------");

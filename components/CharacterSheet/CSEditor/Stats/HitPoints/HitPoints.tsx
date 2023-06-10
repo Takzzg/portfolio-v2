@@ -1,18 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaHeart } from "react-icons/fa";
 
-import { HitPoints_I } from "@/types/csEditor/characterSheet";
+import { CharacterSheet_I, HitPointKey_I, HitPoints_I } from "@/types/csEditor/characterSheet";
 import styles from "./HitPoints.module.scss";
 import CurrentHP from "./CurrentHP/CurrentHP";
 import MaxHP from "./MaxHP/MaxHP";
-import PanelTemplate from "../../PanelTemplate/PanelTemplate";
+import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
+import { useCombinedStore } from "@/zustand/store";
 
-type Props = HitPoints_I;
-
-type HPkeys = "current" | "max";
+type Props = {};
 
 const parseHPValues = (hp: HitPoints_I): HitPoints_I => {
 	const useTempMax = hp.temp.override && hp.temp.max.enabled;
@@ -30,40 +29,41 @@ const parseHPValues = (hp: HitPoints_I): HitPoints_I => {
 };
 
 const HitPoints = (props: Props) => {
-	const [hitpoints, setHitpoints] = useState(parseHPValues(props));
+	const editingCS = useCombinedStore((state) => state.cSheets.editingSheet);
+	const setEditingCS = useCombinedStore((state) => state.cSheets.setEditingSheet);
+
+	const hitpoints = editingCS?.character.stats.hp;
+
+	if (!hitpoints) return <div>Loading...</div>;
+
+	const setEditingHP = (hp: HitPoints_I) => {
+		const editingCopy: CharacterSheet_I = DeepCopy(editingCS);
+		editingCopy.character.stats.hp = parseHPValues(hp);
+		setEditingCS(editingCopy);
+	};
+
+	const updateHPvalue = (key: HitPointKey_I, value: number, temp: boolean) => {
+		const hpCopy: HitPoints_I = DeepCopy(hitpoints);
+		if (temp) hpCopy.temp[key].value = value;
+		else hpCopy[key] = value;
+		setEditingHP(hpCopy);
+	};
+
+	const toggleTemp = (key: HitPointKey_I) => {
+		const hpCopy: HitPoints_I = DeepCopy(hitpoints);
+		hpCopy.temp[key].enabled = !hpCopy.temp[key].enabled;
+		setEditingHP(hpCopy);
+	};
+
+	const toggleTempOverride = () => {
+		const hpCopy: HitPoints_I = DeepCopy(hitpoints);
+		hpCopy.temp.override = !hpCopy.temp.override;
+		setEditingHP(hpCopy);
+	};
 
 	const useTempCurrent = hitpoints.temp.override && hitpoints.temp.current.enabled;
 	const useTempMax = hitpoints.temp.override && hitpoints.temp.max.enabled;
-
 	const displayMax = useTempMax ? hitpoints.temp.max.value : hitpoints.max;
-
-	const toggleTempValue = (key: HPkeys) => {
-		const hp: HitPoints_I = DeepCopy(hitpoints);
-		hp.temp[key].enabled = !hp.temp[key].enabled;
-		const parsed = parseHPValues(hp);
-		setHitpoints(parsed);
-	};
-
-	const toggleOverride = () => {
-		const hp: HitPoints_I = DeepCopy(hitpoints);
-		hp.temp.override = !hp.temp.override;
-		const parsed = parseHPValues(hp);
-		setHitpoints(parsed);
-	};
-
-	const modifyValue = (key: HPkeys, value: number) => {
-		const hp: HitPoints_I = DeepCopy(hitpoints);
-		hp[key] = value;
-		const parsed = parseHPValues(hp);
-		setHitpoints(parsed);
-	};
-
-	const modifyTempValue = (key: HPkeys, value: number) => {
-		const hp: HitPoints_I = DeepCopy(hitpoints);
-		hp.temp[key].value = value;
-		const parsed = parseHPValues(hp);
-		setHitpoints(parsed);
-	};
 
 	return (
 		<PanelTemplate className={styles.hitpoints} Icon={FaHeart} iconColor="red" title={"Hit Points"}>
@@ -80,7 +80,7 @@ const HitPoints = (props: Props) => {
 							disabled={!hitpoints.temp.override}
 							className={styles.toggleTempCurrent}
 							checked={hitpoints.temp.current.enabled}
-							onChange={() => toggleTempValue("current")}
+							onChange={() => toggleTemp("current")}
 						/>
 					</span>
 					<span className={styles.header}>
@@ -92,7 +92,7 @@ const HitPoints = (props: Props) => {
 							disabled={!hitpoints.temp.override}
 							className={styles.toggleTempMax}
 							checked={hitpoints.temp.max.enabled}
-							onChange={() => toggleTempValue("max")}
+							onChange={() => toggleTemp("max")}
 						/>
 					</span>
 				</div>
@@ -101,14 +101,14 @@ const HitPoints = (props: Props) => {
 						current={hitpoints.current}
 						max={displayMax}
 						disabled={useTempCurrent}
-						onIncrease={() => modifyValue("current", hitpoints.current + 1)}
-						onDecrease={() => modifyValue("current", hitpoints.current - 1)}
+						onIncrease={() => updateHPvalue("current", hitpoints.current + 1, false)}
+						onDecrease={() => updateHPvalue("current", hitpoints.current - 1, false)}
 					/>
 					<MaxHP
 						value={hitpoints.max}
 						disabled={useTempMax}
-						onIncrease={() => modifyValue("max", hitpoints.max + 1)}
-						onDecrease={() => modifyValue("max", hitpoints.max - 1)}
+						onIncrease={() => updateHPvalue("max", hitpoints.max + 1, false)}
+						onDecrease={() => updateHPvalue("max", hitpoints.max - 1, false)}
 					/>
 				</div>
 				<div className={styles.tempValues}>
@@ -116,14 +116,14 @@ const HitPoints = (props: Props) => {
 						current={hitpoints.temp.current.value}
 						max={displayMax}
 						disabled={!useTempCurrent}
-						onIncrease={() => modifyTempValue("current", hitpoints.temp.current.value + 1)}
-						onDecrease={() => modifyTempValue("current", hitpoints.temp.current.value - 1)}
+						onIncrease={() => updateHPvalue("current", hitpoints.temp.current.value + 1, true)}
+						onDecrease={() => updateHPvalue("current", hitpoints.temp.current.value - 1, true)}
 					/>
 					<MaxHP
 						value={hitpoints.temp.max.value}
 						disabled={!useTempMax}
-						onIncrease={() => modifyTempValue("max", hitpoints.temp.max.value + 1)}
-						onDecrease={() => modifyTempValue("max", hitpoints.temp.max.value - 1)}
+						onIncrease={() => updateHPvalue("max", hitpoints.temp.max.value + 1, true)}
+						onDecrease={() => updateHPvalue("max", hitpoints.temp.max.value - 1, true)}
 					/>
 					<span className={styles.tempOverride}>
 						<input
@@ -131,7 +131,7 @@ const HitPoints = (props: Props) => {
 							name="tempOverride"
 							id="tempOverride"
 							checked={hitpoints.temp.override}
-							onChange={toggleOverride}
+							onChange={toggleTempOverride}
 						/>
 					</span>
 				</div>

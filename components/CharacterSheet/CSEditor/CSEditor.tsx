@@ -1,7 +1,6 @@
 "use client";
 
-// import { useCombinedStore } from "@/scripts/zustand/store";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./CSEditor.module.scss";
 import Accordion from "@/components/UI/Accordion/Accordion";
 import { FaMale, FaScroll } from "react-icons/fa";
@@ -9,6 +8,8 @@ import { IconType } from "react-icons";
 import Stats from "./Stats/Stats";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 import Abilities from "./Abilities/Abilities";
+import { useCombinedStore } from "@/zustand/store";
+import testSheet from "testSheet";
 
 type Props = {};
 
@@ -31,10 +32,12 @@ const initialState: { [key: string]: boolean } = {};
 categories.forEach((cat) => (initialState[cat.key] = false));
 
 const CSEditor = (props: Props) => {
-	// const cSheetStore = useCombinedStore((state) => state.cSheets);
-	// console.log("cSheetStore.editingSheet", cSheetStore.editingSheet);
-
+	const setEditingCS = useCombinedStore((state) => state.cSheets.setEditingSheet);
 	const [expanded, setExpanded] = useState(initialState);
+
+	useEffect(() => {
+		setEditingCS(testSheet);
+	}, [setEditingCS]);
 
 	const toggleCategory = (key: string) => {
 		let copy = DeepCopy(expanded);

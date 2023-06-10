@@ -1,4 +1,4 @@
-import { CharacterSheet_I } from "@/types/csEditor/characterSheet";
+import { CharacterSheet_I } from "./types/csEditor/characterSheet";
 
 const testSheet: CharacterSheet_I = {
 	title: "Test Sheet",
