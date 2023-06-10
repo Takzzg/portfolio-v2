@@ -3,7 +3,7 @@ import { immer } from "zustand/middleware/immer";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 import { createUserSlice } from "./userSlice";
-import { createCSheetsSlice } from "./CharacterSheet/cSheetsSlice";
+import { createCSheetsSlice } from "./cSheetsSlice";
 import { CombinedState } from "./types";
 
 export const useCombinedStore = create<CombinedState>()(
