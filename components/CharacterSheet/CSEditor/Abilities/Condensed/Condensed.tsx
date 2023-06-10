@@ -19,7 +19,7 @@ const Condensed = (props: Props) => {
 		<PanelTemplate Icon={FaMale} className={styles.condensed} title="Condensed">
 			<span className={styles.header}>Ability</span>
 			<span className={styles.header}>Value</span>
-			<span className={styles.header}>Modifier</span>
+			<span className={styles.header}>Mod.</span>
 
 			{Object.keys(abilities).map((key) => {
 				let abilityKey = key as keyof Abilities_I;
