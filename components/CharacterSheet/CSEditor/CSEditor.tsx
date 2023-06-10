@@ -4,21 +4,14 @@ import React, { useEffect, useState } from "react";
 import styles from "./CSEditor.module.scss";
 import Accordion from "@/components/UI/Accordion/Accordion";
 import { FaMale, FaScroll } from "react-icons/fa";
-import { IconType } from "react-icons";
 import Stats from "./Stats/Stats";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 import Abilities from "./Abilities/Abilities";
 import { useCombinedStore } from "@/zustand/store";
 import testSheet from "testSheet";
+import { CSEditorCategory } from "@/types/csEditor/csEditor";
 
 type Props = {};
-
-type CSEditorCategory = {
-	key: string;
-	title: string;
-	Icon: IconType;
-	children?: JSX.Element | JSX.Element[];
-};
 
 const categories: CSEditorCategory[] = [
 	{ key: "desc", title: "Description", Icon: FaMale, children: undefined },

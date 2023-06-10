@@ -1,4 +1,4 @@
-import { StatModifier } from "../../utils";
+import { StatModifier } from "../../modifiers";
 
 export type Initiative_I = {
 	value: number;

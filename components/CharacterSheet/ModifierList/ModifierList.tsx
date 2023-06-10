@@ -3,7 +3,7 @@ import styles from "./ModifierList.module.scss";
 import { FaInfoCircle } from "react-icons/fa";
 import { useCombinedStore } from "@/zustand/store";
 import { getModifierString, getStringModifierFromValue } from "@/scripts/DnD";
-import { StatModifier } from "@/types/csEditor/utils";
+import { StatModifier } from "@/types/csEditor/modifiers";
 
 const ModifierValue = (props: { modifier: StatModifier }) => {
 	const stats = useCombinedStore((state) => state.cSheets.editingSheet?.character.stats);

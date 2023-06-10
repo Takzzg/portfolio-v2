@@ -1,4 +1,4 @@
-type DataStruct = { [key: string]: any };
+import { DataStruct } from "@/types/localStorage";
 
 const DefaultLSValues: DataStruct = {};
 

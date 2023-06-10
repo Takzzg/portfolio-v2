@@ -1,4 +1,4 @@
-import type { UserState_I, UserStateType, StateSlice } from "./types";
+import { StateSlice, UserStateType, UserState_I } from "@/types/zustand";
 
 const initialUserState: UserState_I = {
 	id: "",

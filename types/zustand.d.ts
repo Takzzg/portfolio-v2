@@ -1,5 +1,5 @@
-import { CharacterSheet_I } from "@/types/csEditor/characterSheet/characterSheet";
 import { StateCreator } from "zustand";
+import { CharacterSheet_I } from "./csEditor/characterSheet/characterSheet";
 
 export interface UserState_I {
 	id: string | null;

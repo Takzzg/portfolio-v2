@@ -1,5 +1,5 @@
+import { CSheetsStateType, CSheetsState_I, StateSlice } from "@/types/zustand";
 import { applyAllModifiers } from "./modifiers";
-import type { CSheetsState_I, CSheetsStateType, StateSlice } from "../types";
 
 const initialCSheetsState: CSheetsState_I = {
 	userSheets: [],

@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 
 import { createUserSlice } from "./userSlice";
 import { createCSheetsSlice } from "./CharacterSheet/cSheetsSlice";
-import { CombinedState } from "./types";
+import { CombinedState } from "@/types/zustand";
 
 export const useCombinedStore = create<CombinedState>()(
 	persist(

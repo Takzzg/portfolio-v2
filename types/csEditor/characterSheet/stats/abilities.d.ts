@@ -1,4 +1,4 @@
-import { StatModifier } from "../../utils";
+import { StatModifier } from "../../modifiers";
 
 export type AbilityKey_I = "str" | "dex" | "con" | "int" | "wis" | "cha";
 
