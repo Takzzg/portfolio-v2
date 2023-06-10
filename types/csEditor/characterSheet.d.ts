@@ -1,13 +1,14 @@
 // ---------------------------------- Utils ----------------------------------
 
-export type StatModifier = {
-	value: number;
+type _baseStatModifier = {
+	key: string;
 	enabled: boolean;
-	description: {
-		source: string;
-		text: string;
-	};
+	title: string;
+	description: string;
 };
+
+export type StatModifier = _baseStatModifier &
+	({ type: "ABILITY"; ability: AbilityKey_I } | { type: "STATIC"; value: number });
 
 // ---------------------------------- Character Sheet ----------------------------------
 
@@ -28,7 +29,7 @@ type CharacterData_I = {
 type CharacterStats_I = {
 	hp: HitPoints_I;
 	ac: ArmorClass_I;
-	initiative: any;
+	initiative: Initiative_I;
 	abilities: Abilities_I;
 };
 
@@ -65,7 +66,6 @@ type Ability_I = {
 };
 
 export type AbilityKey_I = "str" | "dex" | "con" | "int" | "wis" | "cha";
-// export const AbilityKeys: AbilityKey_I[] = ["str", "dex", "con", "int", "wis", "cha"];
 
 export type Abilities_I = {
 	str: Ability_I;
@@ -74,4 +74,10 @@ export type Abilities_I = {
 	int: Ability_I;
 	wis: Ability_I;
 	cha: Ability_I;
+};
+
+export type Initiative_I = {
+	value: number;
+	baseRoll: number;
+	modifiers: StatModifier[];
 };

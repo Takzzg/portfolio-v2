@@ -1,3 +1,4 @@
+import { DEFAULT_MODIFIER_KEYS } from "./scripts/DnD";
 import { CharacterSheet_I } from "./types/csEditor/characterSheet";
 
 const testSheet: CharacterSheet_I = {
@@ -26,7 +27,9 @@ const testSheet: CharacterSheet_I = {
 				temp: {
 					override: false,
 					current: {
-						value: 35,
+						// --------------- BUG ---------------
+						value: 9999,
+						// --------------- BUG ---------------
 						enabled: false,
 					},
 					max: {
@@ -39,20 +42,12 @@ const testSheet: CharacterSheet_I = {
 				value: 15,
 				modifiers: [
 					{
-						value: 5,
-						enabled: true,
-						description: {
-							source: "Dex",
-							text: "you get a bonus equal to your Dex modifier",
-						},
-					},
-					{
+						key: "WILD_SHAPE",
+						type: "STATIC",
 						value: 2,
 						enabled: false,
-						description: {
-							source: "Wild shape",
-							text: "you get +2 CA while you are in wild shape",
-						},
+						title: "Wild Shape",
+						description: "you get +2 CA while you are in wild shape",
 					},
 				],
 			},
@@ -63,12 +58,12 @@ const testSheet: CharacterSheet_I = {
 					baseRoll: 11,
 					modifiers: [
 						{
+							key: "WILD_SHAPE",
+							type: "STATIC",
 							value: -2,
 							enabled: false,
-							description: {
-								source: "Wild shape",
-								text: "you get -2 to Strength while you are in wild shape",
-							},
+							title: "Wild Shape",
+							description: "you get -2 to Strength while you are in wild shape",
 						},
 					],
 				},
@@ -78,7 +73,11 @@ const testSheet: CharacterSheet_I = {
 				wis: { key: "wis", value: 11, baseRoll: 11, modifiers: [] },
 				cha: { key: "cha", value: 11, baseRoll: 11, modifiers: [] },
 			},
-			initiative: {},
+			initiative: {
+				value: 11,
+				baseRoll: 11,
+				modifiers: [],
+			},
 		},
 		feats: {},
 		cantrips: {

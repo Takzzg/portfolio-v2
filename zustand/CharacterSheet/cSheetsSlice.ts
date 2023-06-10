@@ -1,4 +1,5 @@
-import type { CSheetsState_I, CSheetsStateType, StateSlice } from "./types";
+import { applyAllModifiers } from "./modifiers";
+import type { CSheetsState_I, CSheetsStateType, StateSlice } from "../types";
 
 const initialCSheetsState: CSheetsState_I = {
 	userSheets: [],
@@ -14,7 +15,7 @@ export const createCSheetsSlice: StateSlice<CSheetsStateType> = (set) => ({
 	},
 	setEditingSheet: (value) => {
 		set((state) => {
-			state.cSheets.editingSheet = value;
+			state.cSheets.editingSheet = applyAllModifiers(value);
 		});
 	},
 });

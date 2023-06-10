@@ -6,13 +6,12 @@ import { Abilities_I } from "@/types/csEditor/characterSheet";
 import { FaMale } from "react-icons/fa";
 import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
 import { useCombinedStore } from "@/zustand/store";
-import { getAbilityModifierFromValue } from "@/scripts/DnD";
+import { getStringModifierFromValue } from "@/scripts/DnD";
 
 type Props = {};
 
 const Condensed = (props: Props) => {
 	const abilities = useCombinedStore((state) => state.cSheets.editingSheet?.character.stats.abilities);
-	// console.log("condensed", abilities);
 
 	if (!abilities) return <div>Loading...</div>;
 
@@ -29,7 +28,7 @@ const Condensed = (props: Props) => {
 					<React.Fragment key={key}>
 						<span className={styles.title}>{abilityKey}</span>
 						<span className={styles.value}>{abilities[abilityKey].value}</span>
-						<span className={styles.mod}>{getAbilityModifierFromValue(abilities[abilityKey].value)}</span>
+						<span className={styles.mod}>{getStringModifierFromValue(abilities[abilityKey].value)}</span>
 					</React.Fragment>
 				);
 			})}

@@ -5,15 +5,9 @@ import { FaShieldAlt } from "react-icons/fa";
 import styles from "./ArmorClass.module.scss";
 import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
-import { ArmorClass_I, CharacterSheet_I, StatModifier } from "@/types/csEditor/characterSheet";
+import { ArmorClass_I, CharacterSheet_I } from "@/types/csEditor/characterSheet";
 import ModifierList from "../../../ModifierList/ModifierList";
 import { useCombinedStore } from "@/zustand/store";
-
-const calculateTotalCA = (modifiers: StatModifier[]) => {
-	let totalCA = 0;
-	if (modifiers) modifiers.forEach((mod) => mod.enabled && (totalCA += mod.value));
-	return totalCA;
-};
 
 type Props = {};
 
@@ -25,13 +19,12 @@ const ArmorClass = (props: Props) => {
 
 	const armorClass = editingCS.character.stats.ac;
 
-	const toggleModifier = (source: string) => {
+	const toggleModifier = (key: string) => {
 		const acCopy: ArmorClass_I = DeepCopy(armorClass);
-		const mod = acCopy.modifiers.find((m) => m.description.source === source);
+		const mod = acCopy.modifiers.find((m) => m.key === key);
 		if (!mod) return;
 
 		mod.enabled = !mod.enabled;
-		acCopy.value = calculateTotalCA(acCopy.modifiers);
 
 		const editingCopy: CharacterSheet_I = DeepCopy(editingCS);
 		editingCopy.character.stats.ac = acCopy;

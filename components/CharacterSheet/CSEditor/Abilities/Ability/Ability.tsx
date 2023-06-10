@@ -9,16 +9,9 @@ import ModifierList from "../../../ModifierList/ModifierList";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 import { useCombinedStore } from "@/zustand/store";
 import PlusMinus from "@/components/UI/Buttons/PlusMinus/PlusMinus";
+import BaseRoll from "@/components/CharacterSheet/BaseRoll/BaseRoll";
 
 type Props = { abilityKey: AbilityKey_I };
-
-const calculateFinalModifier = (ability: Ability_I) => {
-	let finalValue = ability.baseRoll;
-	ability.modifiers.forEach((m) => {
-		if (m.enabled) finalValue += m.value;
-	});
-	return finalValue;
-};
 
 const Ability = (props: Props) => {
 	const { abilityKey } = props;
@@ -37,30 +30,26 @@ const Ability = (props: Props) => {
 
 	const toggleModifier = (modKey: string) => {
 		const abilityCopy: Ability_I = DeepCopy(ability);
-		const mod = abilityCopy.modifiers.find((m) => m.description.source === modKey);
+		const mod = abilityCopy.modifiers.find((m) => m.key === modKey);
 		if (!mod) return;
 		mod.enabled = !mod.enabled;
-		abilityCopy.value = calculateFinalModifier(abilityCopy);
 		setEditingAbility(abilityCopy);
 	};
 
 	const modifyBaseRoll = (value: number) => {
 		const abilityCopy: Ability_I = DeepCopy(ability);
 		abilityCopy.baseRoll = value;
-		abilityCopy.value = calculateFinalModifier(abilityCopy);
 		setEditingAbility(abilityCopy);
 	};
 
 	return (
 		<PanelTemplate Icon={FaMale} className={styles.ability} title={ability.key}>
 			<span className={styles.total}>Total: {ability.value}</span>
-			<span className={styles.baseRoll}>
-				<span className={styles.title}>Base: {ability.baseRoll}</span>
-				<PlusMinus
-					onIncrease={() => modifyBaseRoll(ability.baseRoll + 1)}
-					onDecrease={() => modifyBaseRoll(ability.baseRoll - 1)}
-				/>
-			</span>
+			<BaseRoll
+				value={ability.baseRoll}
+				onIncrease={() => modifyBaseRoll(ability.baseRoll + 1)}
+				onDecrease={() => modifyBaseRoll(ability.baseRoll - 1)}
+			/>
 			<ModifierList modifiers={ability.modifiers} toggleModifier={toggleModifier} />
 		</PanelTemplate>
 	);

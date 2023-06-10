@@ -10,6 +10,8 @@ import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 import Abilities from "./Abilities/Abilities";
 import { useCombinedStore } from "@/zustand/store";
 import testSheet from "testSheet";
+import { getBaseInitiativeModifier } from "@/scripts/DnD";
+import { CharacterSheet_I } from "@/types/csEditor/characterSheet";
 
 type Props = {};
 
