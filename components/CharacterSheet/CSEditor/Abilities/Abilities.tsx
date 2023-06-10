@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import testSheet from "../testSheet";
+import testSheet from "../../../../testSheet";
 import Condensed from "./Condensed/Condensed";
 import Ability from "./Ability/Ability";
 import { Abilities_I } from "@/types/csEditor/characterSheet";

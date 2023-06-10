@@ -1,4 +1,4 @@
-import type { CSheetsState_I, CSheetsStateType, StateSlice } from "./types";
+import type { CSheetsState_I, CSheetsStateType, StateSlice } from "../types";
 
 const initialCSheetsState: CSheetsState_I = {
 	userSheets: [],

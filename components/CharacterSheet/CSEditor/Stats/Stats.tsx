@@ -1,6 +1,6 @@
 import React from "react";
 
-import testSheet from "../testSheet";
+import testSheet from "../../../../testSheet";
 import HitPoints from "./HitPoints/HitPoints";
 import ArmorClass from "./ArmorClass/ArmorClass";
 
