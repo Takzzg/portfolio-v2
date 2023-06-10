@@ -104,7 +104,7 @@ const Pathfinding = () => {
 
 	const stopAnim = () => {
 		setAnimPlaying(false);
-		animation.current && clearInterval(animation.current);
+		if (animation.current) clearInterval(animation.current);
 	};
 
 	const solve = () => {

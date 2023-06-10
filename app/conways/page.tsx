@@ -66,7 +66,7 @@ const Page = () => {
 
 	const stopAnim = () => {
 		setAnimPlaying(false);
-		animation.current && clearInterval(animation.current);
+		if (animation.current) clearInterval(animation.current);
 	};
 
 	return (

@@ -11,27 +11,27 @@ type Props = {
 	colorWarnings?: boolean;
 };
 
-const colorKeys = [
-	{ value: 0, color: "red" },
-	{ value: 10, color: "orange" },
-	{ value: 25, color: "yellow" },
-	{ value: 100, color: "white" },
-];
+// const colorKeys = [
+// 	{ value: 0, color: "red" },
+// 	{ value: 10, color: "orange" },
+// 	{ value: 25, color: "yellow" },
+// 	{ value: 100, color: "white" },
+// ];
 
-const parseHPcolor = (value: number, max: number) => {
-	const percent = (value * 100) / max;
-	// console.log("percent", percent);
+// const parseHPcolor = (value: number, max: number) => {
+// 	const percent = (value * 100) / max;
+// 	// console.log("percent", percent);
 
-	const aplicableColors = colorKeys.filter((key) => value < key.value);
-	// console.log("aplicableColors", aplicableColors);
+// 	const aplicableColors = colorKeys.filter((key) => value < key.value);
+// 	// console.log("aplicableColors", aplicableColors);
 
-	return aplicableColors.pop()!.color;
-};
+// 	return aplicableColors.pop()!.color;
+// };
 
 const CurrentHP = (props: Props) => {
 	const { disabled, max, onDecrease, onIncrease, current, colorWarnings } = props;
 
-	const [currentColor, setCurrentColor] = useState(colorKeys[-1]);
+	// const [currentColor, setCurrentColor] = useState(colorKeys[-1]);
 	// console.log("currentColor", currentColor);
 
 	return (

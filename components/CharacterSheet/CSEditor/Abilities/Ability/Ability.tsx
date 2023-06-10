@@ -8,7 +8,6 @@ import styles from "./Ability.module.scss";
 import ModifierList from "../../../ModifierList/ModifierList";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 import { useCombinedStore } from "@/zustand/store";
-import PlusMinus from "@/components/UI/Buttons/PlusMinus/PlusMinus";
 import BaseRoll from "@/components/CharacterSheet/BaseRoll/BaseRoll";
 
 type Props = { abilityKey: AbilityKey_I };

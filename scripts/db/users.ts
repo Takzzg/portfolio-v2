@@ -2,7 +2,7 @@ import { Session } from "next-auth";
 import { prisma } from "./prisma";
 
 export const onUserLogIn = async (userDetails: any) => {
-	// console.log("userDetails", userDetails);
+	console.log("userDetails", userDetails);
 };
 
 export const getUserDetails = async (session: Session) => {
