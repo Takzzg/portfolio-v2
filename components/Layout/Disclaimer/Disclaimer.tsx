@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Disclaimer.module.scss";
 import { GrClose } from "react-icons/gr";
-import { checkDisclaimerExpiration } from "../../../scripts/utilities/LocalStorage";
+import { checkDisclaimerExpiration } from "@/scripts/localStorage/disclaimer";
 
 const Disclaimer = () => {
 	const [showDisclaimer, setShowDisclaimer] = useState(false);

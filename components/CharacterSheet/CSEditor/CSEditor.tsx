@@ -29,7 +29,7 @@ const categories: CSEditorCategory[] = [
 ];
 
 const initialState: { [key: string]: boolean } = {};
-categories.forEach((cat) => (initialState[cat.key] = false));
+categories.forEach((cat) => (initialState[cat.key] = true));
 
 const CSEditor = (props: Props) => {
 	const setEditingCS = useCombinedStore((state) => state.cSheets.setEditingSheet);

@@ -3,13 +3,14 @@
 import React from "react";
 import { FaHeart } from "react-icons/fa";
 
-import { CharacterSheet_I, HitPointKey_I, HitPoints_I } from "@/types/csEditor/characterSheet";
 import styles from "./HitPoints.module.scss";
 import CurrentHP from "./CurrentHP/CurrentHP";
 import MaxHP from "./MaxHP/MaxHP";
 import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 import { useCombinedStore } from "@/zustand/store";
+import { HitPointKey_I, HitPoints_I } from "@/types/csEditor/characterSheet/stats/hitPoints";
+import { CharacterSheet_I } from "@/types/csEditor/characterSheet/characterSheet";
 
 type Props = {};
 

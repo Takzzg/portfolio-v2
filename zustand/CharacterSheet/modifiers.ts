@@ -1,16 +1,11 @@
-// --------------------------------- Modifiers ---------------------------------
-
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
-import { CharacterSheet_I, StatModifier } from "@/types/csEditor/characterSheet";
-import {
-	addArmorClassModifier,
-	addInitiativeModifier,
-	applyAllAbilityModifiers,
-	applyArmorClassModifiers,
-	applyHitPointModifiers,
-	applyInitiativeModifiers,
-} from "./utils";
 import { getAbilityModifierFromValue } from "@/scripts/DnD";
+import { CharacterSheet_I } from "@/types/csEditor/characterSheet/characterSheet";
+import { StatModifier } from "@/types/csEditor/utils";
+import { applyAllAbilityModifiers } from "./stats/abilities";
+import { applyHitPointModifiers } from "./stats/hitpoints";
+import { addInitiativeModifier, applyInitiativeModifiers } from "./stats/initiative";
+import { addArmorClassModifier, applyArmorClassModifiers } from "./stats/armorClass";
 
 export const applyAllModifiers = (sheet: CharacterSheet_I): CharacterSheet_I => {
 	const csCopy: CharacterSheet_I = DeepCopy(sheet);

@@ -2,7 +2,7 @@ import React from "react";
 
 import Condensed from "./Condensed/Condensed";
 import Ability from "./Ability/Ability";
-import { AbilityKey_I } from "@/types/csEditor/characterSheet";
+import { AbilityKey_I } from "@/types/csEditor/characterSheet/stats/abilities";
 
 type Props = {};
 

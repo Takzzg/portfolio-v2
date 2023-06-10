@@ -5,9 +5,10 @@ import { FaShieldAlt } from "react-icons/fa";
 import styles from "./ArmorClass.module.scss";
 import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
-import { ArmorClass_I, CharacterSheet_I } from "@/types/csEditor/characterSheet";
 import ModifierList from "../../../ModifierList/ModifierList";
 import { useCombinedStore } from "@/zustand/store";
+import { ArmorClass_I } from "@/types/csEditor/characterSheet/stats/armorClass";
+import { CharacterSheet_I } from "@/types/csEditor/characterSheet/characterSheet";
 
 type Props = {};
 

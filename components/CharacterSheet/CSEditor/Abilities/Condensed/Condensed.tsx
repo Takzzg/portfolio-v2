@@ -2,11 +2,11 @@
 
 import React from "react";
 import styles from "./Condensed.module.scss";
-import { Abilities_I } from "@/types/csEditor/characterSheet";
 import { FaMale } from "react-icons/fa";
 import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
 import { useCombinedStore } from "@/zustand/store";
 import { getStringModifierFromValue } from "@/scripts/DnD";
+import { Abilities_I } from "@/types/csEditor/characterSheet/stats/abilities";
 
 type Props = {};
 

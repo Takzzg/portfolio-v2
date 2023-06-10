@@ -1,6 +1,5 @@
 "use client";
 
-import { AbilityKey_I, Ability_I, CharacterSheet_I } from "@/types/csEditor/characterSheet";
 import React from "react";
 import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
 import { FaMale } from "react-icons/fa";
@@ -9,6 +8,17 @@ import ModifierList from "../../../ModifierList/ModifierList";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 import { useCombinedStore } from "@/zustand/store";
 import BaseRoll from "@/components/CharacterSheet/BaseRoll/BaseRoll";
+import { AbilityKey_I, Ability_I } from "@/types/csEditor/characterSheet/stats/abilities";
+import { CharacterSheet_I } from "@/types/csEditor/characterSheet/characterSheet";
+
+const AbilityNames = {
+	str: "Strength",
+	dex: "Dexterity",
+	con: "Constitution",
+	int: "Inteligence",
+	wis: "Wisdom",
+	cha: "Charisma",
+};
 
 type Props = { abilityKey: AbilityKey_I };
 
@@ -42,7 +52,7 @@ const Ability = (props: Props) => {
 	};
 
 	return (
-		<PanelTemplate Icon={FaMale} className={styles.ability} title={ability.key}>
+		<PanelTemplate Icon={FaMale} className={styles.ability} title={AbilityNames[abilityKey]}>
 			<span className={styles.total}>Total: {ability.value}</span>
 			<BaseRoll
 				value={ability.baseRoll}

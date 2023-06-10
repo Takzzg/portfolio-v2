@@ -4,9 +4,10 @@ import { FaClock } from "react-icons/fa";
 import styles from "./Initiative.module.scss";
 import ModifierList from "@/components/CharacterSheet/ModifierList/ModifierList";
 import { useCombinedStore } from "@/zustand/store";
-import { CharacterSheet_I, Initiative_I } from "@/types/csEditor/characterSheet";
 import { DeepCopy } from "@/scripts/utilities/DeepCopy";
 import BaseRoll from "@/components/CharacterSheet/BaseRoll/BaseRoll";
+import { Initiative_I } from "@/types/csEditor/characterSheet/stats/initiative";
+import { CharacterSheet_I } from "@/types/csEditor/characterSheet/characterSheet";
 
 type Props = {};
 

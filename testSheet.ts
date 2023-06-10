@@ -1,5 +1,4 @@
-import { DEFAULT_MODIFIER_KEYS } from "./scripts/DnD";
-import { CharacterSheet_I } from "./types/csEditor/characterSheet";
+import { CharacterSheet_I } from "./types/csEditor/characterSheet/characterSheet";
 
 const testSheet: CharacterSheet_I = {
 	title: "Test Sheet",

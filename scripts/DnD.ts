@@ -1,4 +1,4 @@
-import { StatModifier } from "@/types/csEditor/characterSheet";
+import { StatModifier } from "@/types/csEditor/utils";
 
 export const DEFAULT_MODIFIER_KEYS = {
 	BASE_ARMOR_CLASS: "BASE_ARMOR_CLASS",
