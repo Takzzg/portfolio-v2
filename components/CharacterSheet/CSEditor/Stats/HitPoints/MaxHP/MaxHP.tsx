@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MaxHP.module.scss";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import PlusMinus from "@/components/UI/Buttons/PlusMinus/PlusMinus";
 
 type Props = {
 	value: number;
@@ -15,12 +15,7 @@ const MaxHP = (props: Props) => {
 		<span className={`${styles.max} ${disabled ? styles.disabled : ""}`}>
 			<span>[]</span>
 			<span className={styles.values}>{value}</span>
-			<button disabled={disabled} className={styles.decreaseBtn} onClick={() => onDecrease()}>
-				<FaMinus />
-			</button>
-			<button disabled={disabled} className={styles.increaseBtn} onClick={() => onIncrease()}>
-				<FaPlus />
-			</button>
+			<PlusMinus disabled={disabled} onIncrease={onIncrease} onDecrease={onDecrease} />
 		</span>
 	);
 };

@@ -60,6 +60,7 @@ const testSheet: CharacterSheet_I = {
 				str: {
 					key: "str",
 					value: 11,
+					baseRoll: 11,
 					modifiers: [
 						{
 							value: -2,
@@ -71,11 +72,11 @@ const testSheet: CharacterSheet_I = {
 						},
 					],
 				},
-				dex: { key: "dex", value: 11, modifiers: [] },
-				con: { key: "con", value: 11, modifiers: [] },
-				int: { key: "int", value: 11, modifiers: [] },
-				wis: { key: "wis", value: 11, modifiers: [] },
-				cha: { key: "cha", value: 11, modifiers: [] },
+				dex: { key: "dex", value: 11, baseRoll: 11, modifiers: [] },
+				con: { key: "con", value: 11, baseRoll: 11, modifiers: [] },
+				int: { key: "int", value: 11, baseRoll: 11, modifiers: [] },
+				wis: { key: "wis", value: 11, baseRoll: 11, modifiers: [] },
+				cha: { key: "cha", value: 11, baseRoll: 11, modifiers: [] },
 			},
 			initiative: {},
 		},

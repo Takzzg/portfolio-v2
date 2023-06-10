@@ -52,15 +52,6 @@ export type HitPoints_I = {
 	};
 };
 
-const BaseArmorClass: StatModifier = {
-	value: "10",
-	enabled: true,
-	description: {
-		source: "base armor class",
-		text: "base armor class",
-	},
-};
-
 export type ArmorClass_I = {
 	value: number;
 	modifiers: StatModifier[];
@@ -69,6 +60,7 @@ export type ArmorClass_I = {
 type Ability_I = {
 	key: string;
 	value: number;
+	baseRoll: number;
 	modifiers: StatModifier[];
 };
 

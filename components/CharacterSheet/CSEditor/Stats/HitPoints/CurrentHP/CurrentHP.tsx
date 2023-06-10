@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FaMinus, FaPlus } from "react-icons/fa";
 import styles from "./CurrentHP.module.scss";
+import PlusMinus from "@/components/UI/Buttons/PlusMinus/PlusMinus";
 
 type Props = {
 	disabled: boolean;
@@ -42,12 +42,7 @@ const CurrentHP = (props: Props) => {
 				<span className={styles.separator}>/</span>
 				<span className={styles.max}>{max}</span>
 			</span>
-			<button disabled={disabled} className={styles.decreaseBtn} onClick={() => onDecrease()}>
-				<FaMinus />
-			</button>
-			<button disabled={disabled} className={styles.increaseBtn} onClick={() => onIncrease()}>
-				<FaPlus />
-			</button>
+			<PlusMinus disabled={disabled} onIncrease={onIncrease} onDecrease={onDecrease} />
 		</span>
 	);
 };
