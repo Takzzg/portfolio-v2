@@ -5,8 +5,8 @@ import styles from "./Condensed.module.scss";
 import { FaMale } from "react-icons/fa";
 import PanelTemplate from "../../../PanelTemplate/PanelTemplate";
 import { useCombinedStore } from "@/zustand/store";
-import { getStringModifierFromValue } from "@/scripts/DnD";
 import { Abilities_I } from "@/types/csEditor/characterSheet/stats/abilities";
+import { getStringModifierFromValue } from "@/scripts/DnD/utils";
 
 type Props = {};
 

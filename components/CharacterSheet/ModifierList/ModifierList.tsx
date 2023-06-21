@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./ModifierList.module.scss";
 import { FaInfoCircle } from "react-icons/fa";
 import { useCombinedStore } from "@/zustand/store";
-import { getModifierString, getStringModifierFromValue } from "@/scripts/DnD";
 import { StatModifier } from "@/types/csEditor/modifiers";
+import { getModifierString, getStringModifierFromValue } from "@/scripts/DnD/utils";
 
 const ModifierValue = (props: { modifier: StatModifier }) => {
 	const stats = useCombinedStore((state) => state.cSheets.editingSheet?.character.stats);
@@ -31,7 +31,15 @@ type Props = { modifiers: StatModifier[]; toggleModifier: Function };
 
 const ModifierList = (props: Props) => {
 	const { modifiers, toggleModifier } = props;
-	if (!modifiers) return null;
+
+	if (!modifiers) return <span>Loading...</span>;
+
+	if (!modifiers.length)
+		return (
+			<span className={styles.modifierList}>
+				<span className={styles.empty}>No Modifiers</span>
+			</span>
+		);
 
 	return (
 		<span className={styles.modifierList}>

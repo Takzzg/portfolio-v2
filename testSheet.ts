@@ -77,6 +77,11 @@ const testSheet: CharacterSheet_I = {
 				baseRoll: 11,
 				modifiers: [],
 			},
+			savingThrows: {
+				fortitude: { value: 0, baseSave: 0, modifiers: [] },
+				reflex: { value: 0, baseSave: 0, modifiers: [] },
+				will: { value: 0, baseSave: 0, modifiers: [] },
+			},
 		},
 		feats: {},
 		cantrips: {
