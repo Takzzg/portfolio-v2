@@ -2,8 +2,8 @@
 
 import React, { createContext, ReactNode, useState } from "react";
 
-import en from "../translations/en.json";
-import es from "../translations/es.json";
+import en from "../translations/en";
+import es from "../translations/es";
 import { Language } from "@/types/language";
 
 type Props = {

@@ -6,6 +6,13 @@ import { ContextProviders } from "./providers";
 import { NextAuthConfig } from "./api/auth/[...nextauth]/route";
 import { Analytics } from "@vercel/analytics/react";
 import { useCombinedStore } from "@/zustand/store";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Guido Queiroz",
+	description: "Guido Queiroz's Portfolio",
+	icons: "/favicon.ico",
+};
 
 const initialServerLoad = async () => {
 	// console.log("----------------- initial server load STARTED -----------------");

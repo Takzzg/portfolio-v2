@@ -5,13 +5,18 @@ type Props = {
 	children: ReactNode;
 	divider?: "mountains" | "bezier";
 	color: string;
+	className?: string;
 };
 
-const Section = ({ children, divider = "mountains", color }: Props) => {
+const Section = (props: Props) => {
+	const { children, divider = "mountains", color, className } = props;
+
 	return (
 		<div style={{ backgroundColor: color, position: "relative" }}>
 			<Divider color={color} divider={divider} />
-			<div style={{ padding: "1rem" }}>{children}</div>
+			<div className={className} style={{ padding: "1rem" }}>
+				{children}
+			</div>
 		</div>
 	);
 };

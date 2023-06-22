@@ -2,16 +2,13 @@ import React from "react";
 
 type Props = {
 	children: string;
+	className?: string;
 };
 
-const Subtitle = ({ children }: Props) => {
+const Subtitle = (props: Props) => {
+	const { children, className } = props;
 	return (
-		<div
-			style={{
-				textAlign: "center",
-				fontSize: "2rem",
-			}}
-		>
+		<div className={className} style={{ textAlign: "center", fontSize: "2rem" }}>
 			{children}
 		</div>
 	);
