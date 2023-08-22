@@ -1,0 +1,42 @@
+.region {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+
+  background-color: rgba($color: #000000, $alpha: 0.15);
+
+  &.selected {
+    background-color: red;
+  }
+
+  .regionName {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  .regionContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 0.5rem;
+
+    .regionTechs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem;
+
+      &.horizontal {
+        flex-direction: row;
+      }
+    }
+
+    .regionChildren {
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.tech {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  .icon {
+    height: 3rem;
+    width: 3rem;
+  }
+
+  &.selected {
+    background-color: red;
+  }
+}

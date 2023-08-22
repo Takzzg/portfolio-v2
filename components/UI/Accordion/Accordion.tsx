@@ -1,28 +1,23 @@
 import React from "react";
 import styles from "./Accordion.module.scss";
-import { IconType } from "react-icons";
-import ExpandBtn from "../Buttons/ExpandBtn/ExpandBtn";
 
 type Props = {
-	title: string;
-	Icon: IconType;
 	expanded: boolean;
 	onToggleAccordion: Function;
-	children?: JSX.Element | JSX.Element[];
+	header: JSX.Element;
+	content?: JSX.Element;
+	className?: string;
 };
 
 const Accordion = (props: Props) => {
-	const { title, Icon, expanded, onToggleAccordion, children } = props;
+	const { expanded, onToggleAccordion, header, content, className = "" } = props;
 
 	return (
-		<div className={styles.accordion}>
-			<span onClick={() => onToggleAccordion()} className={styles.header}>
-				<span className={styles.info}>
-					<Icon /> {title}
-				</span>
-				<ExpandBtn expanded={expanded} onToggleExpand={() => onToggleAccordion()} />
+		<div className={`${className} ${styles.accordion}`}>
+			<span className={styles.header} onClick={() => onToggleAccordion()}>
+				{header || "PLACEHOLDER HEADER"}
 			</span>
-			<span className={`${styles.body} ${!expanded && styles.hidden}`}>{children || "CONTENIDO"}</span>
+			<span className={`${styles.body} ${!expanded && styles.hidden}`}>{content || "PLACEHOLDER CONTENT"}</span>
 		</div>
 	);
 };

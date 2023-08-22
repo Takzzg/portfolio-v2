@@ -1,0 +1,11 @@
+@import '../../styles/breakpoints.scss';
+
+.technologies {
+  display: grid;
+  grid-template-columns: auto;
+  // max-height: 50rem;
+
+  @include lg {
+    grid-template-columns: minmax(20rem, auto) auto;
+  }
+}

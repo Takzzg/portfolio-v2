@@ -1,5 +1,5 @@
 import Layout from "../components/Layout/Layout";
-import "../styles/common/globals.scss";
+import "../styles/globals.scss";
 import { prisma } from "../scripts/db/prisma";
 import { getServerSession } from "next-auth";
 import { ContextProviders } from "./providers";

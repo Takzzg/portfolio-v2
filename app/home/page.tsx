@@ -6,6 +6,7 @@ import Section from "../../components/Section/Section";
 import styles from "./Home.module.scss";
 import Footer from "../../components/Layout/Footer/Footer";
 import { langCtx } from "@/context/Lang";
+import Technologies from "@/components/Technologies/Technologies";
 
 type Props = {};
 
@@ -50,6 +51,7 @@ const Page = (props: Props) => {
 
 			<Section color={"rgb(73, 67, 67)"}>
 				<Subtitle>Technologies used</Subtitle>
+				<Technologies />
 			</Section>
 
 			<Section color={"rgb(241, 157, 69)"} divider={"bezier"}>

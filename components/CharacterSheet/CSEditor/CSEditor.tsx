@@ -44,12 +44,10 @@ const CSEditor = (props: Props) => {
 				<Accordion
 					key={cat.key}
 					expanded={expanded[cat.key]}
-					Icon={cat.Icon}
-					title={cat.title}
 					onToggleAccordion={() => toggleCategory(cat.key)}
-				>
-					{cat.children}
-				</Accordion>
+					header={<span>{cat.title}</span>}
+					content={<div>{cat.children}</div>}
+				/>
 			))}
 		</div>
 	);

@@ -1,13 +1,9 @@
 .accordion {
-  // display: flex;
-  // flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
   .header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     cursor: pointer;
-
     border: 1px solid dimgray;
 
     &:hover {
@@ -16,10 +12,6 @@
   }
 
   .body {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    padding: 0.5rem;
     overflow: hidden;
 
     &.hidden {

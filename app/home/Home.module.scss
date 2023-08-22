@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Redressed&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 
-@import "../../styles/common/shared.scss";
-@import "../../styles/common/utils.scss";
+@import "../../styles/pallette.scss";
 
 .home {
 	.mainTitle {
@@ -20,6 +19,7 @@
 		background: linear-gradient(180deg, rgba(22, 21, 26, 1) 0%, rgba(73, 67, 67, 1) 33%, rgba(241, 157, 69, 1) 100%);
 
 		.firstLine {
+			color: $accent;
 			font-size: 3rem;
 			font-family: "Redressed", cursive;
 		}
