@@ -11,7 +11,7 @@ export type Abilities_I = {
 	cha: Ability_I;
 };
 
-type Ability_I = {
+export type Ability_I = {
 	key: string;
 	value: number;
 	baseRoll: number;
