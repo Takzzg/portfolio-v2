@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./TechSidebar.module.scss";
-import { usedTechnologies } from "constants/technologies";
 import Category from "./Category/Category";
 import { ChangeSelection_I, SelectedTechnology_I } from "@/types/home/technologies";
+import { TechCategoryList } from "constants/technologies/categories";
 
 type Props = {
 	selectedTech: SelectedTechnology_I;
@@ -14,7 +14,7 @@ const TechSidebar = (props: Props) => {
 
 	return (
 		<div className={styles.techSidebar}>
-			{usedTechnologies.map((cat) => (
+			{TechCategoryList.map((cat) => (
 				<Category
 					key={cat.name}
 					cat={cat}
