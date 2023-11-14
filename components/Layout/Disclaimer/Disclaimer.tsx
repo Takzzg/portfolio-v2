@@ -3,10 +3,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Disclaimer.module.scss";
 import { GrClose } from "react-icons/gr";
-import { checkDisclaimerExpiration } from "@/scripts/localStorage/disclaimer";
+import { checkDisclaimerExpiration, createNewDisclaimerExpiration } from "@/scripts/localStorage/disclaimer";
 
 const Disclaimer = () => {
 	const [showDisclaimer, setShowDisclaimer] = useState(false);
+
+	const updateDisclaimerExpiration = () => {
+		createNewDisclaimerExpiration()
+		setShowDisclaimer(false)
+	}
 
 	useEffect(() => {
 		let expValid = checkDisclaimerExpiration();
@@ -19,7 +24,7 @@ const Disclaimer = () => {
 		<div className={styles.disclaimerCont}>
 			<div className={styles.disclaimer}>
 				<span className={styles.title}>Disclaimer</span>
-				<span className={styles.close} onClick={() => setShowDisclaimer(false)}>
+				<span className={styles.close} onClick={updateDisclaimerExpiration}>
 					<GrClose />
 				</span>
 				<hr />
