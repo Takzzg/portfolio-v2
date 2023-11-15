@@ -1,5 +1,32 @@
+@import "@/styles/breakpoints.scss";
+
 .layout {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
+
+	.desktopNavbar,
+	.mobileNavbar {
+		position: sticky;
+		z-index: 10;
+	}
+
+	.desktopNavbar {
+		display: none;
+	}
+	.mobileNavbar {
+		display: unset;
+	}
+
+	@include lg {
+		display: grid;
+		grid-template-columns: 4rem 1fr;
+
+		.desktopNavbar {
+			display: unset;
+		}
+		.mobileNavbar {
+			display: none;
+		}
+	}
 }

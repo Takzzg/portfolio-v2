@@ -20,6 +20,7 @@
 		"@prisma/client": "5",
 		"@vercel/analytics": "^1.0.1",
 		"@vercel/postgres": "^0.3.0",
+		"framer-motion": "^10.16.5",
 		"immer": "^10.0.2",
 		"luxon": "^3.3.0",
 		"next": "^13.4.4",
