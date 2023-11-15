@@ -7,11 +7,11 @@ import styles from "./PrimaryButton.module.scss";
 
 interface Props {
 	title: string;
-	children: any;
+	children: React.ReactNode;
 }
 
-const TitleHidden = { right: "0", left: "auto", opacity: 0 };
-const TitleShown = { right: "auto", left: "100%", opacity: 1 };
+const TitleHidden = { opacity: 0, x: "-100%" };
+const TitleShown = { opacity: 1, x: "0" };
 
 const PrimaryButton = (props: Props) => {
 	const { title, children } = props;
@@ -24,7 +24,12 @@ const PrimaryButton = (props: Props) => {
 			onMouseOut={() => setTitlePosition(TitleHidden)}
 		>
 			<div className={styles.icon}>{children}</div>
-			<motion.div animate={titlePosition} className={styles.hidden} initial={false}>
+			<motion.div
+				className={styles.hidden}
+				animate={titlePosition}
+				initial={false}
+				transition={{ type: "tween" }}
+			>
 				<div className={styles.title}>{title}</div>
 			</motion.div>
 		</div>

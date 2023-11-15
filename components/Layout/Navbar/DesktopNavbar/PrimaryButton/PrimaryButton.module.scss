@@ -1,9 +1,6 @@
 .ButtonCont {
-	position: relative;
-
 	display: grid;
 	grid-template-columns: 1fr auto;
-	// background-color: red;
 
 	.icon {
 		width: 4rem;
@@ -16,7 +13,6 @@
 	}
 
 	.hidden {
-		position: absolute;
 		z-index: -1;
 		height: 100%;
 
