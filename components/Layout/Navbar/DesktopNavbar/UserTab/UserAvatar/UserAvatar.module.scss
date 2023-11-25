@@ -1,0 +1,13 @@
+.userAvatar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	overflow: hidden;
+	border-radius: 50%;
+	border: 3px solid whitesmoke;
+	width: 3.5rem;
+	height: 3.5rem;
+
+	position: relative;
+}

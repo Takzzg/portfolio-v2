@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import styles from "./Layout.module.scss";
 
-import Disclaimer from "./Disclaimer/Disclaimer";
 import DesktopNavbar from "./Navbar/DesktopNavbar/DesktopNavbar";
 import MobileNavbar from "./Navbar/MobileNavbar/MobileNavbar";
 
@@ -11,14 +10,13 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
 	return (
-		<>
-			<Disclaimer />
-			<div className={styles.layout}>
+		<div className={styles.layout}>
+			<div className={styles.navbar}>
 				<DesktopNavbar className={styles.desktopNavbar} />
 				<MobileNavbar className={styles.mobileNavbar} />
-				{children}
 			</div>
-		</>
+			<div className={styles.content}>{children}</div>
+		</div>
 	);
 };
 

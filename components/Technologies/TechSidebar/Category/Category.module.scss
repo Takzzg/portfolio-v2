@@ -1,21 +1,21 @@
-@import '../../../../styles/pallette.scss';
+@import "../../../../styles/palette.scss";
 
 .categoryHeader {
-  // padding: 3rem;
-  // background-color: red;
+	// padding: 3rem;
+	// background-color: red;
 
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 1rem;
-  border: none;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 1rem;
+	border: none;
 
-  background-color: $custom-darkGray;
+	background-color: $custom-darkGray;
 
-  // &.active {}
+	// &.active {}
 }
 
 .categoryBody {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }

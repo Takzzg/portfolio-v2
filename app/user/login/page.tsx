@@ -1,27 +1,37 @@
 "use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
-import React from "react";
+import React, { useEffect } from "react";
+import { signIn, useSession } from "next-auth/react";
 
 type Props = {};
 
 const Login = (props: Props) => {
-	const { data: session } = useSession();
+	const { data: session, status } = useSession();
 
-	if (session) {
-		return (
-			<div>
-				<p>Welcome {session.user?.email}</p>
-				<button onClick={() => signOut()}>Sign Out</button>
-			</div>
-		);
-	}
+	useEffect(() => {
+		console.log("user/login");
+
+		console.log("session", session);
+		console.log("status", status);
+
+		if (!(status === "loading") && !session) void signIn("google", { redirect: false });
+		if (session) {
+			console.log("closing window ?");
+			window.close();
+		}
+	}, [session, status]);
 
 	return (
-		<div>
-			<p>Please log in</p>
-			<button onClick={() => signIn()}>Log In</button>
-		</div>
+		<div
+			style={{
+				width: "100vw",
+				height: "100vh",
+				position: "absolute",
+				left: 0,
+				top: 0,
+				background: "white",
+			}}
+		></div>
 	);
 };
 

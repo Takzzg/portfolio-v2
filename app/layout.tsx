@@ -7,6 +7,7 @@ import { NextAuthConfig } from "./api/auth/[...nextauth]/route";
 import { Analytics } from "@vercel/analytics/react";
 import { useCombinedStore } from "@/zustand/store";
 import { Metadata } from "next";
+import Disclaimer from "@/components/Layout/Disclaimer/Disclaimer";
 
 export const metadata: Metadata = {
 	title: "Guido Queiroz",
@@ -51,6 +52,7 @@ const RootLayout = async ({ children, session }: { children: React.ReactNode; se
 		<html lang="en">
 			<body>
 				<ContextProviders session={session}>
+					<Disclaimer />
 					<Layout>
 						{children}
 						<Analytics />

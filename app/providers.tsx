@@ -5,8 +5,8 @@ import { SessionProvider } from "next-auth/react";
 import LangProvider from "../context/Lang";
 
 type Props = {
-	children?: React.ReactNode;
 	session: Session;
+	children?: React.ReactNode;
 };
 
 export const ContextProviders = ({ children, session }: Props) => {

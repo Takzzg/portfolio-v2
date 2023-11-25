@@ -18,7 +18,12 @@ export const getNewDisclaimerExpiration = (): string => {
 	return parsedDate;
 };
 
+/**
+ * compares given string to Luxon's DateTime.now(),
+ * returns true if given string is still valid
+ */
 export const compareExpiration = (expirationString: string): boolean => {
+	if (!expirationString) return false;
 	let expiration = _formatHuman2Machine(expirationString);
 	return expiration > DateTime.now();
 };

@@ -5,8 +5,7 @@
 	flex-direction: column;
 	align-items: stretch;
 
-	.desktopNavbar,
-	.mobileNavbar {
+	.navbar {
 		position: sticky;
 		z-index: 10;
 	}
@@ -15,7 +14,7 @@
 		display: none;
 	}
 	.mobileNavbar {
-		display: unset;
+		display: flex;
 	}
 
 	@include lg {
@@ -23,7 +22,7 @@
 		grid-template-columns: 4rem 1fr;
 
 		.desktopNavbar {
-			display: unset;
+			display: flex;
 		}
 		.mobileNavbar {
 			display: none;
