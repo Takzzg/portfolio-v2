@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import UserLogin from "./UserLogin/UserLogin";
 import UserDetails from "./UserDetails/UserDetails";
 import SlidingMenuItem from "../SlidingMenuItem/SlidingMenuItem";
@@ -12,20 +12,11 @@ import styles from "./UserTab.module.scss";
 type Props = {};
 
 const UserTab = (props: Props) => {
-	const { data: session, status } = useSession();
+	const { data: session } = useSession();
 
-	useEffect(() => {
-		console.log("session", session);
-		console.log("status", status);
-	}, [session, status]);
-
+	const Icon = session ? <UserAvatar avatarUrl={session.user.image} /> : <FaUserCircle />;
 	const content = <div className={styles.userTabContent}>{session ? <UserDetails /> : <UserLogin />}</div>;
 
-	return (
-		<SlidingMenuItem
-			Icon={session ? <UserAvatar avatarUrl={session.user.image} /> : <FaUserCircle />}
-			content={content}
-		/>
-	);
+	return <SlidingMenuItem Icon={Icon} content={content} verticalPosOverride={{ bottom: 0 }} />;
 };
 export default UserTab;
