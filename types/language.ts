@@ -6,3 +6,11 @@ export type Language = {
 	flag: string;
 	translation: Translation_I;
 };
+
+export interface LanguageOption {
+	name: string;
+	code: LangOptionKey_I;
+	flagCode: string;
+}
+
+export type LangOptionKey_I = "en" | "es";

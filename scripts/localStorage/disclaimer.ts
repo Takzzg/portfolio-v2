@@ -1,17 +1,24 @@
+import { LOCAL_STORAGE_KEYS } from "@/types/localStorage";
 import { compareExpiration, getNewDisclaimerExpiration } from "../utilities/DateTime";
-import { LOCAL_STORAGE_KEYS, lsm_readSingleValue, lsm_updateSingleValue } from "./localStorageManager";
+import { lsm_readSingleKey, lsm_updateDisclaimerValue } from "./localStorageManager";
 
 export const createNewDisclaimerExpiration = () => {
 	// create new expiration date
-	lsm_updateSingleValue(LOCAL_STORAGE_KEYS.DISCLAIMER_EXPIRATION, getNewDisclaimerExpiration());
+	lsm_updateDisclaimerValue(getNewDisclaimerExpiration());
 };
 
 export const checkDisclaimerExpiration = () => {
 	// read disclaimer from local storage
-	let disclaimerExpiration = lsm_readSingleValue(LOCAL_STORAGE_KEYS.DISCLAIMER_EXPIRATION);
+	let disclaimerExpiration = lsm_readSingleKey(LOCAL_STORAGE_KEYS.DISCLAIMER_EXPIRATION);
 
 	// check if disclaimer exists
-	if (disclaimerExpiration === null) return false;
+	if (!disclaimerExpiration || disclaimerExpiration === null) return false;
+
+	// sometimes i hate typescript
+	if (typeof disclaimerExpiration !== "string") {
+		console.warn("lsm_readSingleKey(DISCLAIMER_EXPIRATION) returned something else than a string");
+		return false;
+	}
 
 	// check expiration date (24hs)
 	let expValid = compareExpiration(disclaimerExpiration);

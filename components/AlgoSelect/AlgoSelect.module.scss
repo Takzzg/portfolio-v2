@@ -1,12 +1,8 @@
-@import "../../styles/palette.scss";
-
 .selectContainer {
 	display: flex;
 	align-items: center;
 
 	.algoSelect {
-		background-color: $hover;
-		color: $textPrimary;
 		border: none;
 		border-radius: 0.25rem;
 		padding: 0.5rem;

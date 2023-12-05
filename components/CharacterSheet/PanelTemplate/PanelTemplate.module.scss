@@ -1,20 +1,19 @@
 .panelTemplate {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  border: 2px solid rgba(255, 166, 0, 0.5);
-  border-radius: 5px;
+	border: 2px solid rgba(255, 166, 0, 0.5);
+	border-radius: 5px;
 
-  .title,
-  .content {
-    padding: 0.5rem;
-  }
+	.title,
+	.content {
+		padding: 0.5rem;
+	}
 
-  .title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: gray;
-    border-bottom: 1px solid grey;
-  }
+	.title {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		border-bottom: 1px solid grey;
+	}
 }

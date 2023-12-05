@@ -4,12 +4,14 @@ import { persist } from "zustand/middleware";
 
 import { createUserSlice } from "./userSlice";
 import { createCSheetsSlice } from "./CharacterSheet/cSheetsSlice";
-import { CombinedState } from "@/types/zustand";
+import { CombinedState } from "@/types/zustand/store";
+import { createUserPrefSlice } from "./userPreferences";
 
 export const useCombinedStore = create<CombinedState>()(
 	persist(
 		immer((...api) => ({
 			user: createUserSlice(...api),
+			userPrefs: createUserPrefSlice(...api),
 			cSheets: createCSheetsSlice(...api),
 		})),
 		{
@@ -30,6 +32,10 @@ export const useCombinedStore = create<CombinedState>()(
 					user: {
 						...currentState.user,
 						...(typedPersistedState?.user || {}),
+					},
+					userPrefs: {
+						...currentState.userPrefs,
+						...(typedPersistedState?.userPrefs || {}),
 					},
 					cSheets: {
 						...currentState.cSheets,

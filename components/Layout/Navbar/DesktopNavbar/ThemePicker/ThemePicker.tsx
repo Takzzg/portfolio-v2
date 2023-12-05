@@ -3,15 +3,18 @@ import { MdBrightnessMedium } from "react-icons/md";
 
 import styles from "./ThemePicker.module.scss";
 import SlidingMenuItem from "../SlidingMenuItem/SlidingMenuItem";
-import { ThemeOptions } from "constants/themes";
+import { ThemeOptionKey_I, ThemeOptions } from "constants/themes";
+import { useCombinedStore } from "@/zustand/store";
 
 const Picker = () => {
+	const userPrefsStore = useCombinedStore((store) => store.userPrefs);
+
 	return (
 		<div className={styles.themePicker}>
 			<span className={styles.title}>Theme picker</span>
 			<span className={styles.themeOptions}>
-				{ThemeOptions.map((theme) => {
-					const { name, Icon } = theme;
+				{Object.keys(ThemeOptions).map((themeKey) => {
+					const { name, key, Icon } = ThemeOptions[themeKey as ThemeOptionKey_I];
 
 					return (
 						<div key={name} className={styles.theme}>
@@ -19,7 +22,14 @@ const Picker = () => {
 								<Icon />
 								{name}
 							</label>
-							<input type="radio" name="page-theme" id={name} value={name} />
+							<input
+								type="radio"
+								name="page-theme"
+								id={key}
+								value={key}
+								checked={userPrefsStore.theme.key === key}
+								onChange={() => userPrefsStore.setTheme(key)}
+							/>
 						</div>
 					);
 				})}

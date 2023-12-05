@@ -1,10 +1,9 @@
 .tech {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	padding: 0.25rem;
 
-  &.selected {
-    background-color: red;
-  }
+	// &.selected {
+	// }
 }

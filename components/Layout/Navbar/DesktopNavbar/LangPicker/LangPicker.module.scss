@@ -1,13 +1,7 @@
+@import "./../DesktopNavbar.module.scss";
+
 .langPicker {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 0.25rem;
-
-	padding: 1rem;
-	margin: 1rem;
-
-	background-color: red;
+	@include slidingContentCommons;
 
 	.langOption {
 		display: flex;

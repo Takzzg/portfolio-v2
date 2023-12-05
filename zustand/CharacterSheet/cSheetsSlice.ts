@@ -1,10 +1,6 @@
-import { CSheetsStateType, CSheetsState_I, StateSlice } from "@/types/zustand";
+import { CSheetsStateType, StateSlice } from "@/types/zustand/store";
 import { applyAllModifiers } from "./modifiers";
-
-const initialCSheetsState: CSheetsState_I = {
-	userSheets: [],
-	editingSheet: null,
-};
+import { initialCSheetsState } from "@/types/zustand/cSheets";
 
 export const createCSheetsSlice: StateSlice<CSheetsStateType> = (set) => ({
 	...initialCSheetsState,

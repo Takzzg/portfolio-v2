@@ -1,16 +1,15 @@
 .savingThrowSingular {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
 
-  .title {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
+	.title {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
 
-    .ability {
-      color: dimgray;
-    }
-  }
+		// .ability {
+		// }
+	}
 }

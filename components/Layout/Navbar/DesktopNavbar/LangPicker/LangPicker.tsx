@@ -3,16 +3,20 @@ import Image from "next/image";
 
 import SlidingMenuItem from "../SlidingMenuItem/SlidingMenuItem";
 import styles from "./LangPicker.module.scss";
-import { LangOptions } from "constants/languagess";
+import { LangOptions } from "constants/languages";
 import { GrLanguage } from "react-icons/gr";
+import { LangOptionKey_I } from "@/types/language";
+import { useCombinedStore } from "@/zustand/store";
 
 const Picker = () => {
+	const userPrefsStore = useCombinedStore((store) => store.userPrefs);
+
 	return (
 		<div className={styles.langPicker}>
 			<span className={styles.title}>Lang picker</span>
 			<span className={styles.langOptions}>
-				{LangOptions.map((language) => {
-					const { name, code, flagCode } = language;
+				{Object.keys(LangOptions).map((langKey) => {
+					const { name, code, flagCode } = LangOptions[langKey as LangOptionKey_I];
 					const FlagSize = 80;
 
 					return (
@@ -28,7 +32,14 @@ const Picker = () => {
 								/>
 								{name}
 							</label>
-							<input type="radio" name="page-lang" id={name} value={code} />
+							<input
+								type="radio"
+								name="page-lang"
+								id={name}
+								value={code}
+								checked={userPrefsStore.language === code}
+								onChange={() => userPrefsStore.setLang(code)}
+							/>
 						</div>
 					);
 				})}

@@ -1,18 +1,9 @@
-@import "../../../../styles/palette.scss";
-
 .categoryHeader {
-	// padding: 3rem;
-	// background-color: red;
-
 	display: flex;
 	align-items: center;
 	gap: 0.25rem;
 	padding: 1rem;
 	border: none;
-
-	background-color: $custom-darkGray;
-
-	// &.active {}
 }
 
 .categoryBody {

@@ -1,22 +1,21 @@
 .accordion {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  .header {
-    cursor: pointer;
-    border: 1px solid dimgray;
+	.header {
+		cursor: pointer;
+		border: 1px solid dimgray;
 
-    &:hover {
-      background-color: rgba(128, 128, 128, 0.25);
-    }
-  }
+		// &:hover {
+		// }
+	}
 
-  .body {
-    overflow: hidden;
+	.body {
+		overflow: hidden;
 
-    &.hidden {
-      padding: 0;
-      height: 0;
-    }
-  }
+		&.hidden {
+			padding: 0;
+			height: 0;
+		}
+	}
 }

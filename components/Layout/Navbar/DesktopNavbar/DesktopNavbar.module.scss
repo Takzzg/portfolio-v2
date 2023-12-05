@@ -8,7 +8,6 @@
 	flex-direction: column;
 	justify-content: space-between;
 	z-index: 1;
-	background-color: blue;
 
 	.routes,
 	.features {
@@ -21,19 +20,11 @@
 		align-items: center;
 		padding: 1rem;
 
-		background-color: rgba($color: #000000, $alpha: 0.5);
-
 		font-size: 1.25rem;
 	}
 }
 
 @mixin slidingContentCommons {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
 	padding: 1rem;
 	margin: 1rem;
-
-	background-color: red;
 }

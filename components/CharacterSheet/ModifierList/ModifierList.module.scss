@@ -1,21 +1,20 @@
 .modifierList {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
 
-  .mod {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 0.9rem;
+	.mod {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		font-size: 0.9rem;
 
-    &>span {
-      display: flex;
-    }
+		& > span {
+			display: flex;
+		}
 
-    &.disabled {
-      color: dimgray;
-    }
-  }
+		// &.disabled {
+		// }
+	}
 }

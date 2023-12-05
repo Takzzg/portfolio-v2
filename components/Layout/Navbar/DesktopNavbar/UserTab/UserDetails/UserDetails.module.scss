@@ -1,6 +1,5 @@
-.userDetails {
-	margin: 1rem;
-	padding: 1rem;
+@import "./../../DesktopNavbar.module.scss";
 
-	background-color: orangered;
+.userDetails {
+	@include slidingContentCommons;
 }

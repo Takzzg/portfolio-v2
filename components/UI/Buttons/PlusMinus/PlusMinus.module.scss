@@ -1,40 +1,32 @@
 .plusMinus {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
 
-  button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: whitesmoke;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
+	button {
+		border: none;
+		cursor: pointer;
+		font-size: 1rem;
+		display: flex;
+		align-items: center;
 
-    &.increaseBtn,
-    &.decreaseBtn {
-      color: whitesmoke;
-      border-radius: 2px;
-      height: 24px;
-      width: 24px;
-    }
+		&.increaseBtn,
+		&.decreaseBtn {
+			border-radius: 2px;
+			height: 24px;
+			width: 24px;
+		}
 
-    &.increaseBtn {
-      background-color: green;
-    }
+		// &.increaseBtn {
+		// }
 
-    &.decreaseBtn {
-      background-color: red;
-    }
-  }
+		// &.decreaseBtn {
+		// }
+	}
 
-  &.disabled {
-    color: gray;
-
-    button {
-      background-color: dimgray;
-      cursor: inherit;
-    }
-  }
+	&.disabled {
+		button {
+			cursor: inherit;
+		}
+	}
 }
