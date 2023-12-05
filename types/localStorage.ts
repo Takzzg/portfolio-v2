@@ -8,7 +8,7 @@ export const LOCAL_STORAGE_DEFAULTS: LocalStorageDataStructure_I = {
 
 export type LocalStorageKey_I = "DISCLAIMER_EXPIRATION" | "USER_DETAILS" | "USER_PREFERENCES";
 
-export const LOCAL_STORAGE_KEYS: Record<LocalStorageKey_I, string> = {
+export const LOCAL_STORAGE_KEYS: Record<LocalStorageKey_I, LocalStorageKey_I> = {
 	DISCLAIMER_EXPIRATION: "DISCLAIMER_EXPIRATION",
 	USER_DETAILS: "USER_DETAILS",
 	USER_PREFERENCES: "USER_PREFERENCES",
